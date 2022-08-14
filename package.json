@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "pm2 start app.js --name sc | bunyan -o short",
+    "start": "pm2-runtime start ecosystem.config.js --env production | bunyan -o short",
     "start-dev": "nodemon app.js ",
     "dev": "parcel ./public/js/main.js --out-dir ./public/dist/",
     "build": "parcel build ./public/js/main.js --out-dir ./public/dist/"
