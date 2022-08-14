@@ -52,7 +52,7 @@ const sessionMiddleware = session({
     sameSite: false,
     maxAge: 24 * 60 * 60 * 1000,
   },
-  store: MongoStore.create({ mongoUrl: "mongodb://localhost/test-app" }),
+  store: MongoStore.create({ mongoUrl: config.mongodb.dbURI }),
 });
 
 app.use(cookieParser());
