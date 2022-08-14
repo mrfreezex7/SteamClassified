@@ -1,0 +1,7 @@
+<%if(requesting.appID==440){%>
+    <%- include('../tf2-includes/tf2-tooltip-detail-template.ejs',{item:requesting}) %>
+        <%}else if(requesting.appID==730){%>
+            <%- include('../csgo-includes/csgo-tooltip-detail-template.ejs',{item:requesting}) %>
+                <%}else if(requesting.appID==570){%>
+                    <%- include('../dota2-includes/dota2-tooltip-detail-template.ejs',{item:requesting}) %>
+                        <%}%>

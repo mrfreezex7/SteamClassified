@@ -1,0 +1,19 @@
+<div class="item-name" :style="{'color':item.descriptions.rarity.color}">
+    {{item.name }}
+</div>
+<div :class="['type']">
+    {{ item.descriptions['type'] ? item.descriptions['type'] :'' }}
+</div>
+
+<div class="details-seperator"></div>
+
+
+<div class="details">
+
+    <div class="item-detail-wrapper" v-if="item.market_hash_name.indexOf(item.name)==-1">
+        Real Name :<span class="item-detail-name" :style="{'color':item.descriptions.rarity.color}">
+            {{item.market_hash_name}}
+        </span>
+    </div>
+
+</div>

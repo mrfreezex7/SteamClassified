@@ -1,0 +1,30 @@
+<div class="support-ticket-container">
+    <div class="support-ticket-wrapper container">
+        <%- include('support-options.ejs',{ selectedTab:'overview' })%>
+            <div class="support-ticket-details-container">
+                <div class="overview-container">
+                    <div class="support-ticket-form" v-if="isCreatingTicket!=null">
+                        <div class="label">Enter a subject</div>
+                        <input class="input" type="text" placeholder="Enter your subject here"
+                            v-model="SupportTicketInput.subject">
+                        <div class="label">Describe the issue</div>
+                        <input class="input" type="text" placeholder="Describe youre issue here"
+                            v-model="SupportTicketInput.description">
+                        <div class="submit-container" style="margin-top: 1em;">
+                            <button class="cancel-support-ticket-btn" @click="isCreatingTicket=null"
+                                v-if="!isCreatingTicket">Cancel</button>
+                            <button class="create-support-ticket-btn success-btn" @click="CreateSupportTicket()"
+                                v-if="!isCreatingTicket">Create
+                                Ticket</button>
+
+                            <div class="loader center-loader" style="font-size: 0.2em;" v-else></div>
+                        </div>
+                    </div>
+                    <button class="create-support-ticket-btn success-btn" v-else @click="isCreatingTicket=false">Create
+                        a support
+                        ticket</button>
+                </div>
+
+            </div>
+    </div>
+</div>

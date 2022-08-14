@@ -1,0 +1,58 @@
+<div class="reports-container">
+    <div class="reports-wrapper">
+        <%if(reports.length<=0){%>
+            <div>There are no open reports</div>
+            <%}%>
+                <%reports.forEach(report=>{%>
+                    <div class="report">
+                        <div class="report-header">
+                            <div class="reported-thing-data-wrapper">
+                                <div class="reported-thing">
+                                    <%if(report.reportType=='postComment'){%>
+                                        <a href="<%='/trade/'+report.reportParentId+'/#'+report.reportObjId%>"
+                                            style='color: var(--text-color); font-size: 0.9em;'>
+                                            <%='Comment #'+report.reportObjId%>
+                                        </a>
+                                        <%}else if(report.reportType=='post' ){%>
+                                            <a href="<%='/trade/'+report.reportParentId%>"
+                                                style='color: var(--text-color); font-size: 0.9em;'>
+                                                <%='Post #'+report.reportParentId%>
+                                            </a>
+                                            <%}else if(report.reportType=='user' ){%>
+                                                <a href="<%='/user/'+report.reportParentId%>"
+                                                    style='color: var(--text-color); font-size: 0.9em;'>
+                                                    <%='User #'+report.reportParentId%>
+                                                </a>
+                                                <%}%>
+
+                                </div>
+                                <div class="reported-date">( reported <time datetime="<%=report.createdAt%>"></time> )
+                                </div>
+                                <div class="report-tag" style="margin-left: 0.2em;">Filed by <%= report.owner.name %>
+                                </div>
+                            </div>
+                            <div class="report-result">
+                                <%if(!report.hasOwnProperty('assignedTo')){%>
+                                    <div class="report-view-btn" @click="AssignReport('<%=report._id%>')"
+                                        v-if="!Report.assigning">Accept</div>
+                                    <div class="loader" style="font-size: 0.2em;" v-else></div>
+                                    <%}%>
+
+                            </div>
+                        </div>
+                        <div class="report-reason">
+                            <div class="report-tags">
+                                <div class="report-tag">
+                                    <%= report.reason %>
+                                </div>
+                            </div>
+                            <div class="report-notes">
+                                <%=report.description%>
+                            </div>
+                        </div>
+                    </div>
+                    <%})%>
+    </div>
+</div>
+
+<%- include('../includes/pagination.ejs',{url:'/admin/reports/open/',maxNumberStart:6,maxNumberMiddle:2}) %>

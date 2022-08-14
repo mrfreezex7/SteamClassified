@@ -1,0 +1,27 @@
+<div class="manage-users-container">
+
+    <div class="search-user-wrapper">
+        <input class="post-search-input" style="width: 100%;padding-left: 1em;" type="text"
+            placeholder="Type user SteamID64 and press enter to search " v-model='ManageUser.input'
+            @keyup.enter="SearchUser">
+        <div class="search-result-wrapper">
+
+            <div class="user-details-container" v-if="ManageUser.user">
+                <div class="user-details">
+                    <img class="profilePic" :src="ManageUser.user.profilePic">
+                    <h4 class="profileName" :style="'color:' +ManageUser.user.roleColor" style="margin-right: 0.5em;">
+                        {{ManageUser.user.name}}</h4>
+                    <div class="badge" :style="'background-color:'+ ManageUser.user.roleColor">
+                        {{ ManageUser.user.roleName }}
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <a :href="'/user/'+ManageUser.user.userId" target="_blank" class="view-profile-btn">View SC
+                        Proile</a>
+                    <button class="give-badge-btn" @click="ManageUser.roleModal=true">UpdateRole</button>
+                    <button class="give-premium-btn">Give Premium</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

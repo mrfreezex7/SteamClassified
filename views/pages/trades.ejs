@@ -1,0 +1,11 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/nav.ejs') %>
+
+        <div class="container" style="flex:1;">
+            <%- include('../includes/my-trades.ejs',{profileData:null}) %>
+                <%- include('../includes/pagination.ejs',{url:'/trades/',maxNumberStart:6,maxNumberMiddle:2}) %>
+        </div>
+        <%- include('../includes/footer.ejs') %>
+
+            <%- include('../includes/end.ejs') %>

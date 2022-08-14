@@ -1,0 +1,26 @@
+<div class="admin-commands-container">
+    <div class="admin-commands-menu-container">
+        <a href="/admin" class="admin-command-menu <%= activeTab=='dashboard'?'selected':''%>">Dashboard</a>
+        <a href="/admin/manage-database" class="admin-command-menu <%= activeTab=='database'?'selected':''%>">Manage
+            Database</a>
+        <div class="admin-menu-label">TICKETS</div>
+        <a href="/admin/tickets/my" class="admin-command-menu <%= activeTab=='my-tickets'?'selected':''%>">My
+            Tickets</a>
+        <a href="/admin/tickets/open" class="admin-command-menu <%= activeTab=='open-tickets'?'selected':''%>">Open
+            Tickets</a>
+        <a href="/admin/tickets/closed"
+            class="admin-command-menu <%= activeTab=='closed-tickets'?'selected':''%>">Closed
+            Tickets</a>
+        <div class=" admin-menu-label">REPORTS
+        </div>
+        <a href="/admin/reports/my" class="admin-command-menu <%= activeTab=='my-reports'?'selected':''%>">My
+            Reports</a>
+        <a href="/admin/reports/open" class="admin-command-menu <%= activeTab=='open-reports'?'selected':''%>">Open
+            Reports</a>
+        <a href="/admin/reports/closed"
+            class="admin-command-menu <%= activeTab=='closed-reports'?'selected':''%>">Closed Reports</a>
+        <div class="admin-menu-label">USER</div>
+        <a href="/admin/manage/users" class="admin-command-menu <%= activeTab=='manage-users'?'selected':''%>">Manage
+            User</a>
+    </div>
+</div>

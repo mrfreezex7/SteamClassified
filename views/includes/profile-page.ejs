@@ -1,0 +1,100 @@
+<div class="profile-container container">
+
+    <div class="profile-details-container">
+        <div class="profile-header-container">
+            <div class="profile-pic-wrapper">
+                <img class="user-profile-pic" src="<%= profileData.profilePicFull %>" alt="<%= profileData.name %>"
+                    style=<%='border-color:' +profileData.roleColor%>>
+            </div>
+            <div class="user-profile-detail-wrapper">
+                <div class="user-profile-name-wrapper">
+                    <h2 class="profile-name" style=<%='color:' +profileData.roleColor%>>
+                        <%= profileData.name %>
+                    </h2>
+                    <div class="badge" style=<%='background-color:' +profileData.roleColor%>>
+                        <%= profileData.roleName %>
+                    </div>
+                </div>
+
+                <div class="profile-action-links">
+                    <%if(user && user.userId !==profileData.userId && profileData.tradeUrl){%>
+                        <a class="g-tooltip user-quick-link-wrapper" href="<%=profileData.tradeUrl%>" target="_blank">
+                            <svg class="user-quick-link-icon" class="post-trade-link-icon"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="18px"
+                                height="18px">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z" />
+                            </svg>
+                            <span class="g-tooltiptext">Send Offer</span>
+                        </a>
+                        <%}%>
+                            <a class="g-tooltip user-quick-link-wrapper" href="<%=profileData.profileUrl%>"
+                                target="_blank"><svg class="user-quick-link-icon" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 333333 333333" shape-rendering="geometricPrecision"
+                                    text-rendering="geometricPrecision" image-rendering="optimizeQuality"
+                                    fill-rule="evenodd" clip-rule="evenodd">
+                                    <path
+                                        d="M225 162617l73189 29853c9154-5256 19765-8262 31078-8262 1987 0 3951 94 5890 275l52891-75293v-53c0-23479 9518-44736 24906-60124s36645-24906 60124-24906 44736 9518 60124 24906 24906 36646 24906 60124c0 23479-9518 44736-24906 60124s-36645 24906-60124 24906c-299 0-597-3-895-6l-80753 59150c-1534 14627-8112 27754-17964 37606-11312 11312-26939 18309-44200 18309s-32887-6997-44200-18309c-8257-8257-14215-18813-16831-30626L-1 242906l225-80289zm95341 38889l19367 7899c40021 16324 22200 80460-26977 68683l-24105-9642c2148 4009 4870 7663 8059 10852 8337 8337 19857 13494 32581 13494s24244-5157 32581-13494 13494-19857 13494-32581-5157-24244-13494-32581-19856-13494-32581-13494c-3054 0-6038 298-8925 865zM247997 66956c23541 0 42624 19084 42624 42624 0 23541-19084 42624-42624 42624-23541 0-42624-19083-42624-42624s19083-42624 42624-42624zm39709 2778c-10083-10083-24015-16320-39404-16320s-29320 6237-39404 16320c-10083 10083-16320 24015-16320 39404s6237 29320 16320 39404c10083 10083 24015 16320 39404 16320s29321-6237 39404-16320 16320-24015 16320-39404-6237-29321-16320-39404z" />
+                                </svg>
+                                <span class="g-tooltiptext">Steam Profile</span>
+                            </a>
+                            <a class="g-tooltip user-quick-link-wrapper" href="https://rep.tf/<%=profileData.steamID%>"
+                                target="_blank"><svg class="user-quick-link-icon" xmlns="http://www.w3.org/2000/svg"
+                                    height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                </svg>
+                                <span class="g-tooltiptext">Rep.tf</span>
+                            </a>
+                            <%if(user && user.userId !==profileData.userId){%>
+                                <div class="g-tooltip user-quick-link-wrapper"
+                                    @click="ShowReportModal('user','<%=profileData._id%>','<%=profileData.userId%>')">
+                                    <svg class="user-quick-link-icon" xmlns="http://www.w3.org/2000/svg" height="18px"
+                                        viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+                                    </svg>
+                                    <span class="g-tooltiptext">Report</span>
+                                </div>
+                                <%}%>
+                </div>
+            </div>
+            <div class="user-stats-info-container">
+                <div class="user-join-date-wrapper g-tooltip" style="width: 100%; cursor:default;">
+                    <%= moment(profileData.createdAt).format('MMMM Do YYYY');%>
+                        <span class="g-tooltiptext">Member since</span>
+                </div>
+                <div class="user-basic-stats-wrapper">
+                    <div class="user-stat">
+                        <h4 class="user-stat-counter">
+                            <%=profileData.views%>
+                        </h4>
+                        <p class="user-stat-name">Views</p>
+                    </div>
+                    <div class="user-stat">
+                        <h4 class="user-stat-counter">
+                            <%=profileData.trades%>
+                        </h4>
+                        <p class="user-stat-name">Trades</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <%- include('../includes/profile-sub-nav.ejs',{userId:profileData.userId})%> -->
+
+    <% if(subNav=='trades' ){ %>
+        <%- include('../includes/my-trades.ejs',{profileData:profileData}) %>
+            <%- include('../includes/pagination.ejs',{url:'/user/'+profileData.userId+'/',maxNumberStart:6,maxNumberMiddle:2})
+                %>
+                <% }else if(subNav=='backpack' ){ %>
+                    <%- include('../includes/user-inventory.ejs') %>
+                        <% } %>
+
+
+
+</div>

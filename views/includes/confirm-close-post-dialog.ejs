@@ -1,0 +1,15 @@
+<div id="confirm-post-close-dialog-<%=post.postId%>" class="hidden">
+    <div class="confirm-close-post-container">
+        <div id="confirm-close-post-wrapper-<%=post.postId%>" class="confirm-close-post-wrapper">
+            <div class="confirm-close-post-text">Are you sure you want to close this trade?</div>
+            <div class="confirm-close-post-btn-wrapper">
+                <button class="confirm-close-post-cancel-btn"
+                    @click="ClosePostCloseConfirmDialog(<%=post.postId%>)">Cancel</button>
+                <button class="confirm-close-post-confirm-btn success-btn"
+                    @click="ClosePost('<%=post._id%>',<%=post.postId%>)">Confirm</button>
+            </div>
+        </div>
+        <div id="close-btn-loader-<%=post.postId%>" class="loader hidden" style="font-size: 0.2em;margin: 5.2em;">
+        </div>
+    </div>
+</div>

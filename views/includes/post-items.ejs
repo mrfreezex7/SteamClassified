@@ -1,0 +1,71 @@
+<div class="post-items">
+
+
+
+    <div class="offering">
+
+        <% post.offering.forEach(function(offering) { %>
+
+            <div id="offering-<%=offering.id%>"
+                class="post-item noSelect <%=offering.appID == 440? offering.quality+'-'+offering.appID:'' %> <%= offering.hidden? 'hidden-item':'' %> 
+            <%= offering.appID == 440? offering.descriptions.craftable == 'Non-Craftable'  ? 'Non-Craftable' :'Craftable':''%>"
+                @mouseenter.prevent="ShowItemTooltip" @mouseleave.prevent="HideItemTooltip"
+                style=<%=offering.appID==730?'border-color:'
+                +offering.descriptions.rarity.color:offering.appID==570?'border-color:'
+                +offering.descriptions.rarity.color:''%>>
+
+                <% if(offering.hasOwnProperty('particle') && offering.particle !='' ){%>
+                    <img class="post-item-particle-icon" loading="lazy" src="<%= offering.particle %>">
+                    <% }%>
+                        <img class="post-item-icon" loading="lazy" src="<%= offering.image_url %>"
+                            alt="<%= offering.name %>">
+
+                        <%- include('./editable-post-item-btn.ejs',{isEditable:isEditable,user:user,post:post,offering:offering})
+                            %>
+
+                            <div class="tooltip-template">
+                                <%- include('./post-offering-tooltip.ejs',{offering:offering})%>
+                            </div>
+
+                            <%- include('./post-item-attribute-icons.ejs',{itemData:offering})%>
+
+            </div>
+
+            <% }); %>
+
+    </div>
+
+
+    <div class="requesting">
+        <% post.requesting.forEach(function(requesting) { %>
+
+            <div class="post-item noSelect <%=  requesting.quality+'-'+requesting.appID  %> 
+            <%= requesting.appID == 440? requesting.descriptions.craftable=='Non-Craftable' ? 'Non-Craftable' :'Craftable' : ''%>"
+                @mouseenter.prevent="ShowItemTooltip" @mouseleave.prevent="HideItemTooltip"
+                style=<%=requesting.appID==730?'border-color:'
+                +requesting.descriptions.rarity.color:requesting.appID==570?'border-color:'
+                +requesting.descriptions.rarity.color:''%>>
+
+                <% if(requesting.hasOwnProperty('particle') && requesting.particle !='' ){%>
+                    <img class="post-item-particle-icon" loading="lazy" src="<%= requesting.particle %>">
+                    <% }%>
+                        <img class="post-item-icon" loading="lazy" src="<%= requesting.image_url %>"
+                            alt="<%= requesting.name %>">
+                        <% if(requesting.hasOwnProperty('paint') && requesting.paint.length>0 ){%>
+                            <div class="post-item-paint-color-wrapper">
+                                <span class="post-item-paint-color-seperated" style=<%='background-color:'
+                                    +requesting.paint[0]%>></span>
+                                <span class="post-item-paint-color-seperated" style=<%='background-color:'
+                                    +requesting.paint[requesting.paint.length-1]%>></span>
+                            </div>
+                            <% }%>
+                                <div class="tooltip-template">
+                                    <%- include('./post-requesting-tooltip.ejs',{requesting:requesting})%>
+                                </div>
+
+                                <%- include('./post-item-attribute-icons.ejs',{itemData:requesting})%>
+            </div>
+
+            <% }); %>
+    </div>
+</div>

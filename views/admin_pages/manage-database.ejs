@@ -1,0 +1,14 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../admin_includes/admin-nav.ejs')%>
+
+        <div class="admin-container">
+            <div class="admin-menu">
+                <%- include('../admin_includes/admin-menu.ejs',{activeTab:'database'})%>
+            </div>
+            <div class="admin-details">
+                <%- include('../admin_includes/manage-database.ejs')%>
+            </div>
+        </div>
+
+        <%- include('../includes/end.ejs') %>

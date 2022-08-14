@@ -1,0 +1,80 @@
+<div class="main-ticket-container container">
+    <div class="main-ticket-details">
+        <div class="main-ticket-header">
+            <div class="user-data">
+                <img class="profile-pic" src="<%= ticket.owner.profilePic%>" alt="<%= ticket.owner.name%>">
+                <h2 class="user-name">
+                    <%= ticket.owner.name%>
+                </h2>
+                <div class="ticket-time"> ( <time datetime="<%=ticket.createdAt%>"></time> )</div>
+            </div>
+            <div class="ticket-actions">
+                <%if(!ticket.closed){%>
+                    <%if(ticket.owner.userId==user.userId || ticket.hasOwnProperty('assignedTo')){%>
+                        <button class="close-ticket-btn" @click="CloseTicket(<%=ticket.ticketId%>)"
+                            v-if="!TicketReply.closing">Close Ticket</button>
+                        <div class="loader" style="font-size: 0.2em;" v-else></div>
+                        <% }else{%>
+                            <%if(!ticket.hasOwnProperty('assignedTo')){%>
+                                <button class="close-ticket-btn" @click="AssignTicket('<%=ticket._id%>')"
+                                    v-if="!TicketReply.assigning">Assign Me</button>
+                                <div class="loader" style="font-size: 0.2em;" v-else></div>
+                                <%}%>
+                                    <%}%>
+                                        <%}else{%>
+                                            <div>closed</div>
+                                            <%}%>
+            </div>
+        </div>
+        <div class="ticket-subject">
+            Subject <p class="ticket-subject-data">
+                <%= ticket.subject%>
+            </p>
+        </div>
+        <div class="ticket-details">
+            <%= ticket.description%>
+        </div>
+    </div>
+
+
+
+    <div class="ticket-response-container">
+
+        <h3 class="ticket-response-title">Replies</h3>
+
+        <% ticket.replies.forEach(function(reply) {%>
+            <div class="ticket-response">
+                <div class="ticket-response-header">
+                    <div class="user-data">
+                        <img class="profile-pic" src="<%=reply.owner.profilePic%>" alt="<%=reply.owner.name%>">
+                        <h2 class="user-name">
+                            <%=reply.owner.name%>
+                        </h2>
+                    </div>
+                    <div class="ticket-time">
+                        <time datetime="<%=reply.createdAt%>"></time>
+                    </div>
+                </div>
+                <div class="ticket-response-data">
+                    <%= reply.replyText%>
+                </div>
+            </div>
+
+            <% })%>
+    </div>
+
+    <%if(!ticket.closed && ticket.hasOwnProperty('assignedTo') && ticket.assignedTo !='' ){%>
+        <div class="ticket-reply-container">
+            <div class="ticket-reply-wrapper">
+                <input class="ticket-reply-input" type="text" placeholder="type your reply here"
+                    v-model='TicketReply.input'>
+                <div class=" ticket-reply-submit-container">
+                    <button class="submit-btn success-btn ticket-submit-btn"
+                        @click="AddTicketReply('<%=ticket.owner._id%>',<%=ticket.ticketId%>)"
+                        v-if="!TicketReply.replying">Reply</button>
+                    <div class="loader" style="font-size: 0.2em;" v-else></div>
+                </div>
+            </div>
+        </div>
+        <%}%>
+</div>

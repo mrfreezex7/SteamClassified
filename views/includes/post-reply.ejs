@@ -1,0 +1,320 @@
+<% post.comments.forEach(function(comment,index) { %>
+
+    <%if(comment.hiddenBy==null||`${comment.hiddenBy}`==`${post.owner._id}`||`${comment.hiddenBy}`==`${comment.owner._id}`){%>
+
+        <%if(`${comment.hiddenBy}`==`${post.owner._id}`){%>
+            <div class="hidden-comment" id="hide-<%=comment._id%>" @click="UnhideOwnerComment('<%=comment._id%>')">
+                Comment hidden by Owner
+                <span class="unhide-comment-eye-icon-wrapper"><svg class="unhide-comment-eye-icon"
+                        xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                        fill="#FFFFFF">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z" />
+                    </svg></span>
+            </div>
+
+            <%}else if(`${comment.hiddenBy}`==`${comment.owner._id}`){%>
+                <div class="hidden-comment" id="hide-<%=comment._id%>" @click="UnhideOwnerComment('<%=comment._id%>')">
+                    Comment hidden by Author <span class="unhide-comment-eye-icon-wrapper"><svg
+                            class="unhide-comment-eye-icon" xmlns="http://www.w3.org/2000/svg" height="18px"
+                            viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z" />
+                        </svg></span>
+                </div>
+                <%}%>
+
+                    <div class="main-comment <%=(`${comment.hiddenBy}`==`${post.owner._id}`||`${comment.hiddenBy}`==`${comment.owner._id}`)?'hidden':''%>"
+                        id="unhide-<%=comment._id%>">
+                        <div class="post-reply" id="<%=comment._id%>" userid="<%=comment.owner.userId%>">
+
+
+                            <img class="post-user-profile-pic" loading="lazy" style=<%='border-color:'
+                                +comment.owner.roleColor%> src="<%= comment.owner.profilePic %>" alt="<%=
+                                    comment.owner.name %>">
+
+                                    <div class="post-reply-data-wrapper">
+                                        <div class="post-comment-header">
+                                            <div class="post-user-data">
+
+
+                                                <a href="/user/<%=comment.owner.userId%>" class="post-comment-user-name"
+                                                    style=<%='color:' +comment.owner.roleColor%>>
+                                                    <%= comment.owner.name %>
+                                                </a>
+
+                                                <%if(user && comment.hiddenBy==null){%>
+
+                                                    <button class="comment-action-btn g-tooltip"
+                                                        @click="ShowReplyInput($event,'<%= comment._id %>')">
+                                                        <svg class="comment-action-btn-icon"
+                                                            xmlns="http://www.w3.org/2000/svg" height="18px"
+                                                            viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                                                            <path d="M0 0h24v24H0z" fill="none" />
+                                                            <path
+                                                                d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z" />
+                                                        </svg>
+                                                        <span class="g-tooltiptext"
+                                                            style="font-size: 0.9em;">Reply</span>
+                                                    </button>
+
+                                                    <%if(user&& comment.hiddenBy==null ) {%>
+                                                        <%if(comment.owner._id==user._id|| user.roleName=='Admin'
+                                                            ||user.roleName=='Moderator' ){%>
+                                                            <button class="comment-action-btn g-tooltip"
+                                                                @click="HideComment('<%=post._id%>','<%=comment._id%>',false)"><svg
+                                                                    class="comment-action-btn-icon"
+                                                                    xmlns="http://www.w3.org/2000/svg" height="18px"
+                                                                    viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                                                                    <path
+                                                                        d="M0 0h24v24H0V0zm0 0h24v24H0V0zm0 0h24v24H0V0zm0 0h24v24H0V0z"
+                                                                        fill="none" />
+                                                                    <path
+                                                                        d="M12 6c3.79 0 7.17 2.13 8.82 5.5-.59 1.22-1.42 2.27-2.41 3.12l1.41 1.41c1.39-1.23 2.49-2.77 3.18-4.53C21.27 7.11 17 4 12 4c-1.27 0-2.49.2-3.64.57l1.65 1.65C10.66 6.09 11.32 6 12 6zm-1.07 1.14L13 9.21c.57.25 1.03.71 1.28 1.28l2.07 2.07c.08-.34.14-.7.14-1.07C16.5 9.01 14.48 7 12 7c-.37 0-.72.05-1.07.14zM2.01 3.87l2.68 2.68C3.06 7.83 1.77 9.53 1 11.5 2.73 15.89 7 19 12 19c1.52 0 2.98-.29 4.32-.82l3.42 3.42 1.41-1.41L3.42 2.45 2.01 3.87zm7.5 7.5l2.61 2.61c-.04.01-.08.02-.12.02-1.38 0-2.5-1.12-2.5-2.5 0-.05.01-.08.01-.13zm-3.4-3.4l1.75 1.75c-.23.55-.36 1.15-.36 1.78 0 2.48 2.02 4.5 4.5 4.5.63 0 1.23-.13 1.77-.36l.98.98c-.88.24-1.8.38-2.75.38-3.79 0-7.17-2.13-8.82-5.5.7-1.43 1.72-2.61 2.93-3.53z" />
+                                                                </svg>
+                                                                <span class="g-tooltiptext"
+                                                                    style="font-size: 0.9em;">Hide comment</span>
+                                                            </button>
+                                                            <%}%>
+                                                                <%}%>
+
+                                                                    <a href="<%=comment.owner.profileUrl%>"
+                                                                        target="_blank">
+                                                                        <button class="comment-action-btn g-tooltip">
+                                                                            <svg class="comment-action-btn-icon"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24 24" fill="white"
+                                                                                width="18px" height="18px">
+                                                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                                                <path
+                                                                                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                                                            </svg>
+                                                                            <span class="g-tooltiptext"
+                                                                                style="font-size: 0.9em;">Add on
+                                                                                steam</span>
+                                                                        </button>
+                                                                    </a>
+
+                                                                    <% if(comment.owner.userId!=user.userId){%>
+                                                                        <button class="comment-action-btn g-tooltip"
+                                                                            @click="ShowReportModal('postComment','<%=comment._id%>','<%=post.postId%>')">
+                                                                            <svg class="comment-action-btn-icon"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                height="18px" viewBox="0 0 24 24"
+                                                                                width="18px" fill="#FFFFFF">
+                                                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                                                <path
+                                                                                    d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z" />
+                                                                            </svg>
+                                                                            <span class="g-tooltiptext"
+                                                                                style="font-size: 0.9em;">Report</span>
+                                                                        </button>
+                                                                        <%}%>
+
+                                                                            <%}%>
+                                            </div>
+                                            <div class="post-time">
+                                                <time datetime="<%=comment.createdAt%>"></time>
+                                            </div>
+                                        </div>
+                                        <div class="offer-replies-notes">
+                                            <%= comment.commentText %>
+                                        </div>
+                                    </div>
+
+
+
+                        </div>
+                        <% comment.replies.forEach(function(reply,index) { %>
+
+                            <%if(reply.hiddenBy==null||`${reply.hiddenBy}`==`${post.owner._id}`){%>
+
+                                <%if(`${reply.hiddenBy}`==`${post.owner._id}` && comment.hiddenBy==null){%>
+                                    <div class="hidden-comment hidden-reply" id="hide-<%=reply._id%>"
+                                        @click="UnhideOwnerComment('<%=reply._id%>')">
+                                        Comment hidden by Owner <span class="unhide-comment-eye-icon-wrapper"><svg
+                                                class="unhide-comment-eye-icon" xmlns="http://www.w3.org/2000/svg"
+                                                height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path
+                                                    d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z" />
+                                            </svg></span>
+                                    </div>
+
+                                    <%}else if(`${reply.hiddenBy}`==`${reply.owner._id}` && comment.hiddenBy==null){%>
+                                        <div class="hidden-comment hidden-reply" id="hide-<%=reply._id%>"
+                                            @click="UnhideOwnerComment('<%=reply._id%>')">
+                                            Comment hidden by Author <span class="unhide-comment-eye-icon-wrapper"><svg
+                                                    class="unhide-comment-eye-icon" xmlns="http://www.w3.org/2000/svg"
+                                                    height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                                    <path
+                                                        d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z" />
+                                                </svg></span>
+                                        </div>
+                                        <%}%>
+
+                                            <div class="sub-post-reply  <%=((`${reply.hiddenBy}`==`${post.owner._id}`||`${reply.hiddenBy}`==`${reply.owner._id}`)&& comment.hiddenBy==null)?'hidden':''%>"
+                                                userid="<%= reply.owner.userId %>" id="unhide-<%=reply._id%>">
+
+                                                <img class="post-user-profile-pic" loading="lazy"
+                                                    style=<%='border-color:' +reply.owner.roleColor%> src="
+                                                <%= reply.owner.profilePic %>" alt="<%= reply.owner.name %>">
+                                                        <div class="post-reply-data-wrapper">
+
+
+                                                            <div class="post-comment-header">
+                                                                <div class="post-user-data">
+
+                                                                    <a href="/user/<%=reply.owner.userId%>"
+                                                                        class="post-comment-user-name" style=<%='color:'
+                                                                        +reply.owner.roleColor%>>
+                                                                        <%= reply.owner.name %>
+                                                                    </a>
+
+
+
+                                                                    <%if(user && comment.hiddenBy==null){%>
+
+                                                                        <button class="comment-action-btn g-tooltip"
+                                                                            @click="ShowReplyInput($event,'<%= comment._id %>')">
+                                                                            <svg class="comment-action-btn-icon"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                height="18px" viewBox="0 0 24 24"
+                                                                                width="18px" fill="#FFFFFF">
+                                                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                                                <path
+                                                                                    d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z" />
+                                                                            </svg>
+                                                                            <span class="g-tooltiptext"
+                                                                                style="font-size: 0.9em;">Reply</span>
+                                                                        </button>
+
+                                                                        <%if(user&& comment.hiddenBy==null ) {%>
+                                                                            <%if( (comment.owner._id==user._id &&
+                                                                                reply.hiddenBy==null &&
+                                                                                comment.hiddenBy==null)||
+                                                                                (reply.owner._id==user._id &&
+                                                                                reply.hiddenBy==null &&
+                                                                                comment.hiddenBy==null)||
+                                                                                user.roleName=='Admin'
+                                                                                ||user.roleName=='Moderator' ){%>
+                                                                                <button
+                                                                                    class="comment-action-btn g-tooltip"
+                                                                                    @click="HideComment('<%=post._id%>','<%=comment._id%>','<%=reply._id%>')"><svg
+                                                                                        class="comment-action-btn-icon"
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        height="18px"
+                                                                                        viewBox="0 0 24 24" width="18px"
+                                                                                        fill="#FFFFFF">
+                                                                                        <path
+                                                                                            d="M0 0h24v24H0V0zm0 0h24v24H0V0zm0 0h24v24H0V0zm0 0h24v24H0V0z"
+                                                                                            fill="none" />
+                                                                                        <path
+                                                                                            d="M12 6c3.79 0 7.17 2.13 8.82 5.5-.59 1.22-1.42 2.27-2.41 3.12l1.41 1.41c1.39-1.23 2.49-2.77 3.18-4.53C21.27 7.11 17 4 12 4c-1.27 0-2.49.2-3.64.57l1.65 1.65C10.66 6.09 11.32 6 12 6zm-1.07 1.14L13 9.21c.57.25 1.03.71 1.28 1.28l2.07 2.07c.08-.34.14-.7.14-1.07C16.5 9.01 14.48 7 12 7c-.37 0-.72.05-1.07.14zM2.01 3.87l2.68 2.68C3.06 7.83 1.77 9.53 1 11.5 2.73 15.89 7 19 12 19c1.52 0 2.98-.29 4.32-.82l3.42 3.42 1.41-1.41L3.42 2.45 2.01 3.87zm7.5 7.5l2.61 2.61c-.04.01-.08.02-.12.02-1.38 0-2.5-1.12-2.5-2.5 0-.05.01-.08.01-.13zm-3.4-3.4l1.75 1.75c-.23.55-.36 1.15-.36 1.78 0 2.48 2.02 4.5 4.5 4.5.63 0 1.23-.13 1.77-.36l.98.98c-.88.24-1.8.38-2.75.38-3.79 0-7.17-2.13-8.82-5.5.7-1.43 1.72-2.61 2.93-3.53z" />
+                                                                                    </svg>
+                                                                                    <span class="g-tooltiptext"
+                                                                                        style="font-size: 0.9em;">Hide
+                                                                                        reply</span>
+                                                                                </button>
+                                                                                <%}%>
+                                                                                    <%}%>
+                                                                                        <a href="<%=reply.owner.profileUrl%>"
+                                                                                            target="_blank">
+                                                                                            <button
+                                                                                                class="comment-action-btn g-tooltip">
+                                                                                                <svg class="comment-action-btn-icon"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="white"
+                                                                                                    width="18px"
+                                                                                                    height="18px">
+                                                                                                    <path
+                                                                                                        d="M0 0h24v24H0z"
+                                                                                                        fill="none" />
+                                                                                                    <path
+                                                                                                        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                                                                                </svg>
+                                                                                                <span
+                                                                                                    class="g-tooltiptext"
+                                                                                                    style="font-size: 0.9em;">Add
+                                                                                                    on
+                                                                                                    steam</span>
+                                                                                            </button>
+                                                                                        </a>
+
+                                                                                        <%
+                                                                                            if(reply.owner.userId!=user.userId){%>
+                                                                                            <button
+                                                                                                class="comment-action-btn g-tooltip"
+                                                                                                @click="ShowReportModal('postComment','<%=reply._id%>','<%=post.postId%>')">
+                                                                                                <svg class="comment-action-btn-icon"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    height="18px"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    width="18px"
+                                                                                                    fill="#FFFFFF">
+                                                                                                    <path
+                                                                                                        d="M0 0h24v24H0z"
+                                                                                                        fill="none" />
+                                                                                                    <path
+                                                                                                        d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z" />
+                                                                                                </svg>
+                                                                                                <span
+                                                                                                    class="g-tooltiptext"
+                                                                                                    style="font-size: 0.9em;">Report</span>
+                                                                                            </button>
+                                                                                            <%}%>
+
+                                                                                                <%}%>
+
+
+
+
+                                                                </div>
+                                                                <div class="post-time">
+                                                                    <time datetime="<%=reply.createdAt%>"></time>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="offer-replies-notes">
+                                                                <%= reply.commentText %>
+                                                            </div>
+                                                        </div>
+
+                                            </div>
+                                            <%}else{%>
+                                                <div class="hidden-comment hidden-reply">Comment hidden by Moderator
+                                                </div>
+                                                <%}%>
+                                                    <% }); %>
+                    </div>
+                    <%}else{%>
+                        <div class="hidden-comment">Comment hidden by Moderator</div>
+                        <%}%>
+                            <% }); %>
+
+
+                                <% if(user){%>
+                                    <div class="post-sub-replies hidden" id="post-sub-replies">
+                                        <div class="post-user-data">
+                                            <img class="post-user-profile-pic" loading="lazy" style=<%='border-color:'
+                                                +user.roleColor%>
+                                            src="<%=user.profilePic %>" alt="<%=user.name%>">
+                                        </div>
+                                        <div class="post-reply-input-area" style="padding:0">
+                                            <input class="post-reply-text-area" :maxlength="CommentTextMaxCounter"
+                                                placeholder="Reply to this message..."
+                                                v-model="CommentReplyText"></input>
+                                            <div class="comment-text-counter" v-if="CommentReplyTextCounter>0">
+                                                {{CommentReplyTextCounter}}/{{CommentTextMaxCounter}}
+                                            </div>
+                                            <button class="sub-reply-btn submit-btn success-btn" v-if="!isSubCommenting"
+                                                @click="AddCommentReply('<%= post.owner._id %>','<%= post._id %>',<%= post.postId %>)">reply</button>
+                                            <div class="loader" style="font-size: 0.2em;" v-else></div>
+                                        </div>
+                                    </div>
+                                    <% } %>

@@ -1,0 +1,7 @@
+<div id="system-message-container" class="system-message-container">
+    <div v-for="message in SystemMessages" class="system-message fadeIn" :class="'bg-'+message.messageType">
+        <p class="text-message" :class="message.messageType">{{message.message}}</p>
+        <div class="close-icon noSelect" :class="message.messageType" @click="RemoveSystemMessage(message.id)">&times;
+        </div>
+    </div>
+</div>

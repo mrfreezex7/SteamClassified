@@ -1,0 +1,20 @@
+<div :class="['item-name']" :style="{'color':item.descriptions.rarity.color}">
+    {{item.name }}
+</div>
+<div :class="['type']">
+    {{ item.descriptions['type'] ? item.descriptions['type'] :'' }}
+</div>
+
+<div class="details-seperator"></div>
+
+
+<div class="details">
+
+    <div class="item-detail-wrapper" v-if="item.descriptions['exterior']">
+        Exterior : <span class="item-detail-name">
+            {{item.descriptions.exterior}}
+        </span>
+    </div>
+
+
+</div>

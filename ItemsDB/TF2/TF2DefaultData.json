@@ -1,0 +1,30 @@
+[
+    {
+        "type": "A random item for Team Fortress 2!",
+        "name": "TF2 Offers",
+        "image_url": "/images/misc_item/tf2_offers.png",
+        "appID": 440,
+        "query": ""
+    },
+    {
+        "type": "When used in search, will match any item for TF2.",
+        "name": "Wildcard/Any TF2 Item",
+        "image_url": "/images/misc_item/any.png",
+        "appID": 440,
+        "query": ""
+    },
+    {
+        "type": "Trade real world money at your own risk.When used in search, will match real money for TF2.",
+        "name": "Real World Money - TF2",
+        "image_url": "/images/misc_item/cash.png",
+        "appID": 440,
+        "query": "CASH"
+    },
+    {
+        "type": "Trade in cryptocurrency at your own risk.When used in search, will match cryptocurrency for TF2.",
+        "name": "Cryptocurrency - TF2",
+        "image_url": "/images/misc_item/crypto.png",
+        "appID": 440,
+        "query": "CRYPTO"
+    }
+]

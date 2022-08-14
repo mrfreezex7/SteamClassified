@@ -1,0 +1,16 @@
+COOKIE_KEY = "Random String"
+
+MONGO_DB = "cloud db url here"
+
+FIREBASE_SERVICE_KEY="your key here"
+
+TESTBOT_API_KEY = "Your Steam API KEY"
+
+STEAM_RETURN_URL = 'http://localhost:7777/auth/steam/return'
+STEAM_REALM = 'http://localhost:7777/'
+
+WEBSITE_URL = 'http://localhost:7777/'
+
+ADMIN_ID = 'Steam Community ID'
+
+NODE_ENV = 'development'

@@ -1,0 +1,24 @@
+<div class="container" style="flex: 1;">
+    <div class="settings-container">
+
+        <ul class="settings-details-container">
+            <div class="offer-setting">
+                <div class="offer-setting-header">Trade Offers</div>
+                <div class="offer-setting-details">
+                    <p style="font-size: 0.9em;">Your Trade Offer URL is used to deliver your items via trade offers. <a
+                            href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url"
+                            target="_blank" style="color: var(--success-btn-color);text-decoration: underline;">Click
+                            here</a>
+                        to view your Trade Offer URL.</p>
+                    <input id='trade-url' type="text" class="offer-setting-input" value="<%=user.tradeUrl%>"
+                        placeholder="Trade URL">
+                    <div class="submit-container">
+                        <button class="submit-btn success-btn" v-if="!isSavingData"
+                            @click="UpdateTradeUrl">save</button>
+                        <div class="loader center-loader" style="font-size: 0.2em;" v-else></div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

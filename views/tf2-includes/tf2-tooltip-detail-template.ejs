@@ -1,0 +1,95 @@
+<div class="item-name <%= item.quality+'-'+item.appID %>">
+    <%= item.name %>
+</div>
+<div class="type <%= item.quality+'-'+item.appID %>">
+    <%= item.descriptions['type'] ? item.descriptions['type'] :'' %>
+</div>
+
+<div class="details-seperator"></div>
+
+<div class="details">
+
+    <% if(item.market_hash_name.indexOf(item.name)==-1){ %>
+        <div class="item-detail-wrapper">
+            Real Name :<span class="item-detail-name <%= item.quality+'-'+item.appID %>">
+                <%=item.market_hash_name%>
+
+            </span>
+        </div>
+        <% } %>
+
+            <% if(item.descriptions['effect']){ %>
+                <div class="item-detail-wrapper">
+                    Effect : <span class="item-detail-name">
+                        <%=item.descriptions.effect%>
+                    </span>
+                </div>
+                <% } %>
+
+                    <% if(item.descriptions['exterior']){ %>
+                        <div class="item-detail-wrapper">
+                            Exterior : <span class="item-detail-name">
+                                <%=item.descriptions.exterior%>
+                            </span>
+                        </div>
+                        <% } %>
+
+                            <% if(item.descriptions['paint']){ %>
+                                <div class="item-detail-wrapper">
+                                    Painted : <span class="item-detail-name">
+                                        <%=item.descriptions.paint%>
+                                    </span>
+                                </div>
+                                <% } %>
+
+                                    <% if(item.descriptions['parts']){ %>
+                                        <div class="item-detail-wrapper">
+                                            Parts :
+                                            <ul class="item-detail-list-wrapper">
+                                                <%item.descriptions['parts'].forEach(function(part) { %>
+                                                    <li class="item-detail-list Strange-440">
+                                                        <%=part%>
+                                                    </li>
+                                                    <%}) %>
+                                            </ul>
+
+                                        </div>
+                                        <% } %>
+                                            <% if(item.descriptions['spells']){ %>
+                                                <div class="item-detail-wrapper">
+                                                    <%=item.descriptions['spells'].length>
+                                                        0 ?'Spells :': 'Spell'%>
+
+
+                                                        <ul class="item-detail-list-wrapper">
+                                                            <%item.descriptions['spells'].forEach(function(spell) { %>
+                                                                <li class="item-detail-list Haunted-440">
+                                                                    <%=spell%>
+                                                                </li>
+                                                                <%}) %>
+                                                        </ul>
+
+                                                </div>
+                                                <% } %>
+                                                    <% if(item.descriptions['killstreak']){ %>
+                                                        <div class="item-detail-wrapper">
+                                                            Killstreaks:
+                                                            <ul class="item-detail-list-wrapper">
+                                                                <%item.descriptions['killstreak'].forEach(function(streak)
+                                                                    { %>
+                                                                    <li class="item-detail-list">
+                                                                        <%=streak%>
+                                                                    </li>
+                                                                    <%}) %>
+                                                            </ul>
+                                                        </div>
+                                                        <% } %>
+
+                                                            <% if(item.descriptions['craftable'] &&
+                                                                item.descriptions['craftable']!='Craftable' ){ %>
+                                                                <div class="not-craftable-text">
+                                                                    (Not-Craftable)
+                                                                </div>
+                                                                <% } %>
+
+</div>

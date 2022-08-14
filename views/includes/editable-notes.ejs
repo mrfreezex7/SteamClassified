@@ -1,0 +1,36 @@
+<% if(post.notes !='' ||post.active) { %>
+    <div class="editable-post-notes-container">
+        <div id="post-notes-parent" class="post-notes">
+            <div id="post-notes" class="ql-editor">
+                <%- post.notes %>
+            </div>
+        </div>
+        <% if(post.active) { %>
+            <div id="edit-notes-<%=post.postId%>" class="edit-notes-btns-container">
+                <% if(user && (user.userId==post.owner.userId)){%>
+                    <button class="edit-notes-btn g-tooltip" @click.stop="EditPostNotes" v-if="!ToggleEditNotes">
+                        <svg class="edit-notes-icon" xmlns="http://www.w3.org/2000/svg"
+                            enable-background="new 0 0 20 20" height="18px" viewBox="0 0 20 20" width="18px"
+                            fill="#FFFFFF">
+                            <rect fill="none" height="20" width="20" />
+                            <path
+                                d="M3,5h9v1.5H3V5z M3,11.25h6v1.5H3V11.25z M3,8.12h9v1.5H3V8.12z M16.78,11.99l0.65-0.65c0.29-0.29,0.29-0.77,0-1.06 l-0.71-0.71c-0.29-0.29-0.77-0.29-1.06,0l-0.65,0.65L16.78,11.99z M16.19,12.58L11.77,17H10v-1.77l4.42-4.42L16.19,12.58z" />
+                        </svg>
+                        <span class="g-tooltiptext">Edit note</span>
+                    </button>
+                    <button class="edit-notes-btn g-tooltip" @click.stop="UpdatePostNotes('<%=post._id%>')"
+                        v-if="ToggleEditNotes && !isUpdatingNotes">
+                        <svg class="edit-notes-icon" xmlns="http://www.w3.org/2000/svg" height="18px"
+                            viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
+                        </svg>
+                        <span class="g-tooltiptext">Save note</span>
+                    </button>
+                    <div class="loader center-loader" style="font-size: 0.2em;" v-if="isUpdatingNotes"></div>
+                    <% }%>
+            </div>
+            <% } %>
+    </div>
+    <% } %>

@@ -1,0 +1,83 @@
+<div class="trade-posts container">
+
+    <div class="trade-post-wrapper">
+        <div id="trade-post-<%=post.postId%>" class="trade-post <%=post.active?'':'trade-post-closed'%>"
+            style="overflow:visible;">
+            <div class="post-header">
+                <div class="post-user-data">
+                    <a href="/user/<%=post.owner.userId%>" target="_blank" class="post-user-data">
+                        <img loading="lazy" style=<%='border-color:' +post.owner.roleColor%>
+                        class="post-user-profile-pic" loading="lazy"
+                        src="<%= post.owner.profilePic %>" alt="<%= post.owner.name %>">
+                                <h2 class="post-user-name" style=<%='color:' +post.owner.roleColor%>>
+                                    <%= post.owner.name %>
+                                </h2>
+                    </a>
+                    <%- include('post-time.ejs', {post:post}) %>
+                </div>
+                <%- include('post-bookmark-report.ejs', {post:post,user:user}) %>
+
+                    <%- include('post-actions.ejs', {post:post,user:user}) %>
+            </div>
+            <%- include('post-items.ejs', {post:post,isEditable:true}) %>
+
+                <%- include('editable-notes.ejs', {post:post,user:user}) %>
+
+                    <%- include('post-stats.ejs', {post:post}) %>
+
+                        <%- include('confirm-close-post-dialog.ejs',{post:post}) %>
+        </div>
+
+        <div class="comment-header">
+            <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                fill="#FFFFFF">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                    d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z" />
+            </svg>
+            <h3 class="text">Comments</h3>
+        </div>
+
+
+
+        <%if(post.comments.length>0){%>
+            <div class="trade-post-replies">
+                <%- include('post-reply.ejs', {user:user,post:post }) %>
+            </div>
+            <%}%>
+
+
+
+                <% if(!user){ %>
+                    <%- include('login-modal.ejs',{loginBtnText:"Login to Comment"}) %>
+                        <% } else {%>
+
+                            <div class="post-reply-container">
+
+                                <div class="post-header">
+                                    <div class="post-user-data">
+                                        <img class="post-user-profile-pic" loading="lazy" style=<%='border-color:'
+                                            +post.owner.roleColor%> src="<%=user.profilePic %>" alt="<%=user.name %>">
+                                                <h2 class="post-user-name" style=<%='color:' +user.roleColor%>>
+                                                    <%=user.name %> <span>wants to say...</span>
+                                                </h2>
+                                    </div>
+                                </div>
+                                <div class="post-reply-input-area">
+                                    <input class="post-reply-text-area" v-model="CommentText"
+                                        placeholder="Type your offer or message here..."
+                                        :maxlength="CommentTextMaxCounter"></input>
+                                    <div class="comment-text-counter" v-if="CommentTextCounter>0">
+                                        {{CommentTextCounter}}/{{CommentTextMaxCounter}}</div>
+                                </div>
+                                <div class="submit-container">
+                                    <button class="submit-btn success-btn" v-if="!isCommenting"
+                                        @click="AddComment('<%-post.owner._id %>','<%= post._id %>',<%= post.postId %>)">Post</button>
+                                    <div class="loader center-loader" style="font-size: 0.2em;" v-else></div>
+                                </div>
+                            </div>
+                            <% } %>
+    </div>
+</div>
+
+<%- include('item-tooltip.ejs') %>

@@ -1,0 +1,94 @@
+<% if(pagination && pagination.totalDocs>0){%>
+    <div class="pagination-container container">
+        <ul class="pagination-wrapper">
+
+            <li>
+                <a class="page-btn <%= pagination.hasPrevPage ? 'active-btn':'non-active-btn' %>"
+                    href="<%= pagination.hasPrevPage? url+pagination.prevPage:'#' %>"><svg class="page-btn-icon"
+                        xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                        fill="#FFFFFF">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" />
+                    </svg>Prev</a>
+            </li>
+
+            <% if(pagination.totalPages<=maxNumberStart ){%>
+                <% for(var i=1; i<pagination.totalPages+1; i++){%>
+                    <li>
+
+                        <a href="<%=url%><%=i%>" class="page-number <%= pagination.page == i ? 'active-page':'' %>">
+                            <%=i%>
+                        </a>
+
+                    </li>
+                    <% }%>
+                        <% }%>
+
+                            <% if(pagination.page<maxNumberStart && pagination.totalPages>maxNumberStart){%>
+                                <% for(var i=1; i<7; i++){%>
+                                    <li>
+
+                                        <a href="<%=url%><%=i%>"
+                                            class="page-number <%= pagination.page == i ? 'active-page':'' %>">
+                                            <%=i%>
+                                        </a>
+
+                                    </li>
+                                    <% }%>
+                                        <% }else{%>
+                                            <% if(pagination.page>=maxNumberStart &&
+                                                pagination.totalPages>maxNumberStart){%>
+                                                <a href="<%=url%>1"
+                                                    class="page-number <%= pagination.page == 1? 'active-page':'' %>">
+                                                    1
+                                                </a>
+                                                <li class="page-dots">...</li>
+                                                <% for(var i=pagination.page-maxNumberMiddle;
+                                                    i<pagination.page+maxNumberMiddle+1; i++){%>
+                                                    <% if(i<=pagination.totalPages){%>
+                                                        <li>
+                                                            <a href="<%=url%><%=i%>"
+                                                                class="page-number <%= pagination.page == i ? 'active-page':'' %>">
+                                                                <%=i%>
+                                                            </a>
+                                                        </li>
+                                                        <% }%>
+                                                            <% }%>
+
+                                                                <% }%>
+                                                                    <% }%>
+
+                                                                        <% if((pagination.page+maxNumberMiddle)<pagination.totalPages
+                                                                            && pagination.totalPages>maxNumberStart ){%>
+                                                                            <% if((pagination.page+maxNumberMiddle)
+                                                                                <pagination.totalPages){%>
+                                                                                <li class="page-dots">...</li>
+                                                                                <%}%>
+                                                                                    <li>
+                                                                                        <a class="page-number <%= pagination.page == i ? 'active-page':'' %>"
+                                                                                            href="<%=url%><%=pagination.totalPages%>">
+                                                                                            <%=pagination.totalPages%>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <% }%>
+
+                                                                                        <li><a class="page-btn <%= pagination.hasNextPage ? 'active-btn':'non-active-btn' %>"
+                                                                                                href="<%= pagination.hasNextPage? url+pagination.nextPage:'#' %>">
+                                                                                                Next<svg
+                                                                                                    class="page-btn-icon"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    height="18px"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    width="18px"
+                                                                                                    fill="#FFFFFF">
+                                                                                                    <path
+                                                                                                        d="M0 0h24v24H0V0z"
+                                                                                                        fill="none" />
+                                                                                                    <path
+                                                                                                        d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
+                                                                                                </svg>
+                                                                                            </a></li>
+
+        </ul>
+    </div>
+    <% }%>

@@ -1,0 +1,148 @@
+<div class="admin-stats-container">
+    <div class="admin-main-stat-name" style="display: flex;
+    justify-content: space-between;">
+        Website Stats
+        <div style="font-size: 0.85em;">
+            Maintenance
+            <label class="switch" @click="SetMaintenanceMode()">
+                <input id="maintenance-check" class="switch-input" type="checkbox" v-model="isMaintenance">
+                <span class="slider round"></span>
+            </label>
+
+        </div>
+    </div>
+    <div class="admin-stats-wrapper">
+        <div class="admin-stat website-stats">
+            <div class="admin-stat-details">
+                <h4 class="admin-stat-text">Active Users</h4>
+                <h6 class="admin-stat-text-counter">0</h6>
+            </div>
+            <div class="admin-stat-logo">
+                <svg class="admin-stat-icon" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24"
+                    width="36px" fill="#000000">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M9 13.75c-2.34 0-7 1.17-7 3.5V19h14v-1.75c0-2.33-4.66-3.5-7-3.5zM4.34 17c.84-.58 2.87-1.25 4.66-1.25s3.82.67 4.66 1.25H4.34zM9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm7.04 6.81c1.16.84 1.96 1.96 1.96 3.44V19h4v-1.75c0-2.02-3.5-3.17-5.96-3.44zM15 12c1.93 0 3.5-1.57 3.5-3.5S16.93 5 15 5c-.54 0-1.04.13-1.5.35.63.89 1 1.98 1 3.15s-.37 2.26-1 3.15c.46.22.96.35 1.5.35z" />
+                </svg>
+            </div>
+        </div>
+        <div class="admin-stat website-stats">
+            <div class="admin-stat-details">
+                <h4 class="admin-stat-text">Total Users</h4>
+                <h6 class="admin-stat-text-counter">
+                    <%=dashboard.totalUsers%>
+                </h6>
+            </div>
+            <div class="admin-stat-logo">
+                <svg class="admin-stat-icon" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24"
+                    width="36px" fill="#000000">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M9 13.75c-2.34 0-7 1.17-7 3.5V19h14v-1.75c0-2.33-4.66-3.5-7-3.5zM4.34 17c.84-.58 2.87-1.25 4.66-1.25s3.82.67 4.66 1.25H4.34zM9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm7.04 6.81c1.16.84 1.96 1.96 1.96 3.44V19h4v-1.75c0-2.02-3.5-3.17-5.96-3.44zM15 12c1.93 0 3.5-1.57 3.5-3.5S16.93 5 15 5c-.54 0-1.04.13-1.5.35.63.89 1 1.98 1 3.15s-.37 2.26-1 3.15c.46.22.96.35 1.5.35z" />
+                </svg>
+            </div>
+        </div>
+        <div class="admin-stat website-stats">
+            <div class="admin-stat-details">
+                <h4 class="admin-stat-text">Total Posts</h4>
+                <h6 class="admin-stat-text-counter">
+                    <%=dashboard.totalPosts%>
+                </h6>
+            </div>
+            <div class="admin-stat-logo">
+                <svg class="admin-stat-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 20 20"
+                    height="36px" viewBox="0 0 20 20" width="36px" fill="#000000">
+                    <g>
+                        <rect fill="none" height="20" width="20" x="0" />
+                    </g>
+                    <g>
+                        <g />
+                        <g>
+                            <path
+                                d="M14,15H5V6h6V5H5C4.45,5,4,5.45,4,6V15c0,0.55,0.45,1,1,1H14c0.55,0,1-0.45,1-1V9h-1V15z" />
+                            <polygon points="7,8 7,9 11,9 12,9 12,8" />
+                            <rect height="1" width="5" x="7" y="10" />
+                            <rect height="1" width="5" x="7" y="12" />
+                            <polygon points="15,3 14,3 14,5 14,5 12,5 12,6 14,6 14,8 15,8 15,6 15,6 17,6 17,5 15,5" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-main-stat-name">
+        Ticket Stats
+    </div>
+    <div class="admin-stats-wrapper">
+        <div class="admin-stat ticket-stats">
+            <div class="admin-stat-details">
+                <h4 class="admin-stat-text">Open Tickets</h4>
+                <h6 class="admin-stat-text-counter">
+                    <%=dashboard.openTickets%>
+                </h6>
+            </div>
+            <div class="admin-stat-logo">
+                <svg class="admin-stat-icon" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24"
+                    width="36px" fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54zM11 15h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2z" />
+                </svg>
+            </div>
+        </div>
+        <div class="admin-stat ticket-stats">
+            <div class="admin-stat-details">
+                <h4 class="admin-stat-text">Closed Tickets</h4>
+                <h6 class="admin-stat-text-counter">
+                    <%=dashboard.closedTickets%>
+                </h6>
+            </div>
+            <div class="admin-stat-logo">
+                <svg class="admin-stat-icon" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24"
+                    width="36px" fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54zM11 15h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-main-stat-name">
+        Report Stats
+    </div>
+    <div class="admin-stats-wrapper">
+        <div class="admin-stat report-stats">
+            <div class="admin-stat-details">
+                <h4 class="admin-stat-text">Open Reports</h4>
+                <h6 class="admin-stat-text-counter">
+                    <%=dashboard.openReports%>
+                </h6>
+            </div>
+            <div class="admin-stat-logo">
+                <svg class="admin-stat-icon" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24"
+                    width="36px" fill="#000000">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+                </svg>
+            </div>
+        </div>
+        <div class="admin-stat report-stats">
+            <div class="admin-stat-details">
+                <h4 class="admin-stat-text">Closed Reports</h4>
+                <h6 class="admin-stat-text-counter">
+                    <%=dashboard.closedReports%>
+                </h6>
+            </div>
+            <div class="admin-stat-logo">
+                <svg class="admin-stat-icon" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24"
+                    width="36px" fill="#000000">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+                </svg>
+            </div>
+        </div>
+
+    </div>
+</div>

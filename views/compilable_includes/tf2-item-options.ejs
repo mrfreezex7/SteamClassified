@@ -1,0 +1,61 @@
+<div class="item-option-container" v-on-clickaway="ClickAway" v-if="!SlotOption.global.hidden"
+    :style="{top:SlotOption.global.top+'px',left:SlotOption.global.left+'px'}">
+    <select name="quality" class="item-option" v-model="SlotOption.quality" @change="UpdateItemOption()">
+        <option value="Unique">Unique</option>
+        <option value="Normal">Normal</option>
+        <option value="Vintage">Vintage</option>
+        <option value="Genuine">Genuine</option>
+        <option value="Strange">Strange</option>
+        <option value="Unusual">Unusual</option>
+        <option value="Haunted">Haunted</option>
+        <option value="Collectors">Collector's</option>
+        <option value="Decorated">Decorated</option>
+        <option value="Community">Community</option>
+        <option value="Self-Made">Self-Made</option>
+        <option value="Valve">Valve</option>
+    </select>
+    <select name="paint" class="item-option" v-model="SlotOption.paint" @change="UpdateItemOption()">
+        <option value="No_Paint">No Paint</option>
+        <% for(i=0;i<OptionDetails.paintNames.length;i++){%>
+            <option value="<%=OptionDetails.paintNames[i]%>">
+                <%=OptionDetails.paintNames[i]%>
+            </option>
+            <% }%>
+    </select>
+    <select name="effect" class="item-option" v-model="SlotOption.effect" @change="UpdateItemOption()">
+        <option value="No_Effect">
+            No Effect
+        </option>
+        <% for(i=0;i<OptionDetails.effectNames.length;i++){%>
+            <option value="<%=OptionDetails.effectNames[i]%>">
+                <%=OptionDetails.effectNames[i]%>
+            </option>
+            <% }%>
+    </select>
+    <select name="killstreak" class="item-option" v-model="SlotOption.killstreak" @change="UpdateItemOption()">
+        <option value="No_Killstreak">No Killstreak</option>
+        <option value="Normal">Normal</option>
+        <option value="Specialized">Specialized</option>
+        <option value="Professional">Professional</option>
+    </select>
+    <select name="parts" class="item-option" v-model="SlotOption.parts" @change="UpdateItemOption()">
+        <option value="No_Parts">No Parts</option>
+        <% for(i=0;i<OptionDetails.partNames.length;i++){%>
+            <option value="<%=OptionDetails.partNames[i]%>">
+                <%=OptionDetails.partNames[i]%>
+            </option>
+            <% }%>
+    </select>
+    <select name="exterior" class="item-option" v-model="SlotOption.exterior" @change="UpdateItemOption()">
+        <option value="No_Exterior">No Exterior</option>
+        <option value="Factory New">Factory New</option>
+        <option value="Minimal Wear">Minimal Wear</option>
+        <option value="Field-Tested">Field-Tested</option>
+        <option value="Well-Worn">Well-Worn</option>
+        <option value="Battle-Scarred">Battle-Scarred</option>
+    </select>
+    <select name="craftable" class="item-option" v-model="SlotOption.craftable" @change="UpdateItemOption()">
+        <option value="Craftable">Craftable</option>
+        <option value="Non-Craftable">Non-Craftable</option>
+    </select>
+</div>

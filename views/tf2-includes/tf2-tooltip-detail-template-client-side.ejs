@@ -1,0 +1,80 @@
+<div :class="['item-name',item.quality+'-'+item.appID]">
+    {{item.name }}
+</div>
+<div :class="['type',  item.quality+'-'+item.appID]">
+    {{ item.descriptions['type'] ? item.descriptions['type'] :'' }}
+</div>
+
+<div class="details-seperator"></div>
+
+
+<div class="details">
+
+    <div class="item-detail-wrapper" v-if="item.market_hash_name.indexOf(item.name)==-1">
+        Real Name :<span :class="['item-detail-name',item.quality+'-'+item.appID]">
+            {{item.market_hash_name}}
+        </span>
+    </div>
+
+    <div class="item-detail-wrapper" v-if="item.descriptions['effect']">
+        Effect : <span class="item-detail-name">
+            {{item.descriptions.effect}}
+        </span>
+    </div>
+
+    <div class="item-detail-wrapper" v-if="item.descriptions['exterior']">
+        Exterior : <span class="item-detail-name">
+            {{item.descriptions.exterior}}
+        </span>
+    </div>
+
+    <div class="item-detail-wrapper" v-if="item.descriptions['paint']">
+        Painted : <span class="item-detail-name">
+            {{item.descriptions.paint}}
+        </span>
+    </div>
+
+    <div class="item-detail-wrapper" v-if="item.descriptions['parts']">
+        Parts :
+        <ul class="item-detail-list-wrapper">
+            <li class="item-detail-list Strange-440" v-for="part in item.descriptions['parts']">
+                {{part}}
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="item-detail-wrapper" v-if="item.descriptions['spells']">
+
+        {{item.descriptions['spells'].length>
+        0 ?'Spells :': 'Spell'}}
+
+        <ul class="item-detail-list-wrapper">
+
+            <li class="item-detail-list Haunted-440" v-for="spell in item.descriptions['spells']">
+                {{spell}}
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="item-detail-wrapper" v-if="item.descriptions['killstreak']">
+        Killstreaks:
+        <ul class="item-detail-list-wrapper">
+
+            <li class="item-detail-list" v-for="streak in item.descriptions['killstreak']">
+                {{streak}}
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="not-craftable-text"
+        v-if="item.descriptions['craftable']  && item.descriptions['craftable']!='Craftable' ">
+        (Not-Craftable)
+    </div>
+
+
+</div>

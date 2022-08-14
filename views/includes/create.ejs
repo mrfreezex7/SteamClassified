@@ -1,0 +1,237 @@
+<div class="trade-posts container">
+
+
+    <%if(user.tradeUrl==''){ %>
+        <div class="trade-not-set-popup">If you wish to receive trade offers, enter your trade url <a
+                href="/settings">here.</a>
+        </div>
+        <%} %>
+
+
+            <% if(user.usedSlots>=user.maxSlots){%>
+                <div class="max-slot-used-message-container">
+                    <p>You have used all slots (<%=user.usedSlots%>/<%=user.maxSlots%>).please close some active
+                                trades
+                                to
+                                create new trades.</p>
+                </div>
+                <%}else{%>
+
+                    <div class="trade-post" style="overflow:visible;">
+
+                        <div class="post-header">
+                            <div class="post-user-data">
+                                <h2 class="post-user-name">New Trade</h2>
+                            </div>
+                            <div class="slot-counter-container">
+                                <p class="slot-counter">
+                                    <%=user.usedSlots%>/<%=user.maxSlots%> slots used
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="post-items post-items-border-bottom">
+
+                            <div class="offering">
+                                <div v-for="(item, index) in OfferingItems" class="post-item-slot noSelect"
+                                    :class="[item.appID==440?item.quality+'-'+item.appID:'',item.appID==440?item.descriptions.craftable == 'Non-Craftable'  ? 'Non-Craftable' :'Craftable':'']"
+                                    @click="SelectSlotItem(0,item,$event)" @mouseenter.prevent="ShowItemTooltip"
+                                    @mouseleave.prevent="HideItemTooltip"
+                                    :style="[item.appID==730?{'border-color':item.descriptions.rarity.color}:item.appID==570?{'border-color':item.descriptions.rarity.color}:'']">
+                                    <img v-if="item.hasOwnProperty('particle') && item.particle!=''"
+                                        class="post-catlog-item-image-particle" loading="lazy" :src="item.particle">
+                                    <img class="post-catlog-item-image" loading="lazy" :src="item.image_url"
+                                        :alt="item.name">
+                                    <svg class="delete-icon" @click.stop="RemoveSlotItem(0,index,item)"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                                        width="24px" fill="#FFFFFF">
+                                        <path d="M0 0h24v24H0V0z" fill="none" opacity=".87" />
+                                        <path
+                                            d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z" />
+                                    </svg>
+                                    <div class="tooltip-template">
+
+                                        <div v-if="item.appID==440">
+                                            <%- include('../tf2-includes/tf2-tooltip-detail-template-client-side.ejs')
+                                                %>
+                                        </div>
+                                        <div v-if="item.appID==730">
+                                            <%- include('../csgo-includes/csgo-tooltip-detail-template-client-side.ejs')
+                                                %>
+                                        </div>
+                                        <div v-if="item.appID==570">
+                                            <%- include('../dota2-includes/dota2-tooltip-detail-template-client-side.ejs')
+                                                %>
+                                        </div>
+
+                                    </div>
+                                    <%- include('./post-item-attribute-icons-client-side.ejs')%>
+                                </div>
+                                <div v-if="OfferingItems.length < MaxSlot" class="post-item-slot"
+                                    :class="[SelectedSlotType==0 ? 'selected-slot' : '']" @click="SelectSlot(0)">
+                                </div>
+                            </div>
+
+                            <div class="requesting">
+                                <div v-for="(item, index) in RequestingItems" class="post-item-slot noSelect"
+                                    @click="SelectSlotItem(1,item,$event)"
+                                    :class="[item.appID==440?item.options.quality+'-'+item.appID:'',item.appID==440?item.options.craftable == 'Non-Craftable'  ? 'Non-Craftable' :'Craftable':'']"
+                                    :style="[item.appID==730?{'border-color':item.descriptions.rarity.color}:item.appID==570?{'border-color':item.descriptions.rarity.color}:'']">
+
+
+                                    <img class="post-item-particle-icon" loading="lazy" :src="GetParticleLink(item)"
+                                        v-if="item.options.hasOwnProperty('effect') && item.options.effect !='No_Effect'">
+
+                                    <img class="post-catlog-item-image" loading="lazy" :src="item.image_url"
+                                        :alt="item.name">
+
+
+
+                                    <div class="post-item-paint-color-wrapper"
+                                        v-if="item.options.hasOwnProperty('paint') && item.options.paint !='No_Paint'">
+                                        <span class="post-item-paint-color-seperated"
+                                            :style="{'background-color': GetPaintColor(item)[0] }"></span>
+                                        <span class="post-item-paint-color-seperated"
+                                            :style="{'background-color': GetPaintColor(item)[GetPaintColor(item).length-1] }"></span>
+                                    </div>
+
+
+
+
+                                    <svg class="delete-icon" @click.stop="RemoveSlotItem(1,index,item)"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                                        width="24px" fill="#FFFFFF">
+                                        <path d="M0 0h24v24H0V0z" fill="none" opacity=".87" />
+                                        <path
+                                            d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z" />
+                                    </svg>
+
+                                    <div v-if="item.appID==440">
+
+                                        <%-
+                                            include('../tf2-includes/tf2-item-attribute-icons-requesting-client-side.ejs')%>
+                                    </div>
+                                    <div v-else>
+                                        <%- include('./post-item-attribute-icons-client-side.ejs')%>
+                                    </div>
+
+
+                                </div>
+
+                                <div v-if="RequestingItems.length < MaxSlot" class="post-item-slot"
+                                    :class="[SelectedSlotType==1 ? 'selected-slot' : '']" @click="SelectSlot(1)">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <%- include('../includes/game-select-item-search.ejs', {isSearch:false}) %>
+
+
+                            <div id="item-catlog-container" class="item-catlog-container custom-scrollbar">
+
+                                <div v-if="SelectedSlotType==0 && ShowLoading.main" class="loading-wrapper">
+
+                                    <div class="loader-wrapper noSelect" v-if="ShowLoading.loader">
+                                        <div class="loader"></div>
+                                        <p class="loading-text ">Loading {{SelectedGame}} Inventory</p>
+                                    </div>
+
+                                    <div class="error-wrapper" v-show="ShowLoading.error">
+                                        <p>Error getting inventory items from Steam.</p>
+                                        <br>
+                                        <button class="load-inv-btn" @click="LoadInventory">RETRY LOADING
+                                            {{SelectedGame}}
+                                            INVENTORY</button>
+                                    </div>
+                                    <div class="empty-inv-wrapper" v-show="ShowLoading.empty">
+                                        <p>It seems like you dont have anything in your {{SelectedGame}} inventory!
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div v-if="SelectedSlotType==0" v-for="(item,index) in FilteredUserInventory"
+                                    @click="SelectCatlogItem(item)" class="post-catlog-item noSelect"
+                                    :class="[item.isSelected?'isSelected':'' ,item.appID==440? item.quality+'-'+item.appID:'',item.appID==440?  item.descriptions.craftable == 'Non-Craftable'? 'Non-Craftable' :'Craftable' : '']"
+                                    :name="item.name" :defIndex="item.defindex" @mouseenter.prevent="ShowItemTooltip"
+                                    @mouseleave.prevent="HideItemTooltip"
+                                    :style="[item.appID==730?{'border-color':item.descriptions.rarity.color}:item.appID==570?{'border-color':item.descriptions.rarity.color}:'']">
+                                    <img v-if="item.hasOwnProperty('particle') && item.particle!=''"
+                                        class="post-catlog-item-image-particle" loading="lazy" :src="item.particle">
+                                    <img class="post-catlog-item-image" loading="lazy" :src="item.image_url"
+                                        :alt="item.name" loading="lazy">
+                                    <div class="tooltip-template">
+
+                                        <div v-if="item.appID==440">
+                                            <%- include('../tf2-includes/tf2-tooltip-detail-template-client-side.ejs')
+                                                %>
+                                        </div>
+                                        <div v-if="item.appID==730">
+                                            <%- include('../csgo-includes/csgo-tooltip-detail-template-client-side.ejs')
+                                                %>
+                                        </div>
+                                        <div v-if="item.appID==570">
+                                            <%- include('../dota2-includes/dota2-tooltip-detail-template-client-side.ejs')
+                                                %>
+                                        </div>
+
+                                    </div>
+
+                                    <%- include('./post-item-attribute-icons-client-side.ejs')%>
+                                </div>
+
+                                <div v-if="SelectedSlotType==1" v-for="item in SearchedItems"
+                                    @click="SelectCatlogItem(item)" class="post-catlog-item noSelect" :name="item.name"
+                                    :defIndex="item.defindex" @mouseenter.prevent="ShowItemTooltip"
+                                    @mouseleave.prevent="HideItemTooltip"
+                                    :style="[item.appID==730?{'border-color':item.descriptions.rarity.color}:item.appID==570?{'border-color':item.descriptions.rarity.color}:'']">
+                                    <img class="post-catlog-item-image" loading="lazy" :src="item.image_url"
+                                        :alt="item.name" loading="lazy">
+                                    <div class="tooltip-template">
+
+                                        <div v-if="item.appID==440">
+                                            <%-
+                                                include('../tf2-includes/tf2-tooltip-detail-template-client-side-requesting.ejs')%>
+                                        </div>
+                                        <div v-if="item.appID==730">
+                                            <%-
+                                                include('../csgo-includes/csgo-tooltip-detail-template-client-side-requesting.ejs')%>
+                                        </div>
+                                        <div v-if="item.appID==570">
+                                            <%- include('../dota2-includes/dota2-tooltip-detail-template-client-side-requesting.ejs')
+                                                %>
+                                        </div>
+
+                                    </div>
+
+                                    <div v-if="item.appID==730">
+                                        <%- include('../csgo-includes/csgo-item-attribute-icons-client-side.ejs')%>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <%- include('../includes/create-page-item-paginate.ejs')%>
+
+                                <%- include('../includes/create-edit-notes.ejs') %>
+
+
+                                    <div class="submit-container">
+                                        <button class="submit-btn success-btn" @click="CreatePost()"
+                                            v-if="!isCreatingPost">Create</button>
+                                        <div class="loader center-loader" style="font-size: 0.2em;" v-else></div>
+                                    </div>
+
+
+                    </div>
+
+                    <%}%>
+
+</div>
+
+<%-include('tf2-item-options.ejs')%>
+
+    <%- include('item-tooltip.ejs') %>

@@ -1,0 +1,13 @@
+<%if(posts.length<=0 && !profileData){%>
+    <div class="no-item-info-message">
+        You haven't made a single trade post yet!
+    </div>
+    <%}else if(posts.length<=0 && profileData.userId==user.userId){%>
+        <div class="no-item-info-message">
+            You haven't made a single trade post yet!
+        </div>
+        <%}else if(posts.length<=0 && profileData.userId!=user.userId){%>
+            <div class="no-item-info-message">
+                User has not created any post yet!
+            </div>
+            <%}%>

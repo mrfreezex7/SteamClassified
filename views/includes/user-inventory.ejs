@@ -1,0 +1,38 @@
+<div class="player-inventory-container">
+
+    <%- include('../includes/game-select-item-search.ejs', {isSearch:false}) %>
+
+
+        <div id="item-catlog-container" class="item-catlog-container custom-scrollbar item-catlog-fix">
+
+            <div v-if="SelectedSlotType==0 && ShowLoading.main" class="loading-wrapper">
+
+                <div class="loader-wrapper noSelect" v-if="ShowLoading.loader">
+                    <div class="loader"></div>
+                    <p class="loading-text">Loading {{SelectedGame}} Inventory</p>
+                </div>
+
+                <div class="error-wrapper" v-show="ShowLoading.error">
+                    <p>Error getting inventory items from Steam.</p>
+                    <br>
+                    <button class="load-inv-btn" @click="LoadInventory">RETRY LOADING {{SelectedGame}}
+                        INVENTORY</button>
+                </div>
+                <div class="empty-inv-wrapper" v-show="ShowLoading.empty">
+                    <p>It seems like you dont have anything in your {{SelectedGame}} inventory!</p>
+                </div>
+            </div>
+
+            <div v-for="(item,index) in FilteredUserInventory" class="post-catlog-item noSelect" :name="item.name"
+                :defIndex="item.defindex" :class="item.quality+'-'+item.appID" @mouseenter.prevent="ShowItemTooltip"
+                @mouseleave.prevent="HideItemTooltip">
+                <img class="post-catlog-item-image" loading="lazy" :src="item.image_url" :alt="item.name"
+                    loading="lazy">
+                <div class="tooltip-template">
+                    <%- include('../tf2-includes/tf2-tooltip-detail-template-client-side.ejs') %>
+                </div>
+            </div>
+        </div>
+</div>
+
+<%- include('item-tooltip.ejs') %>

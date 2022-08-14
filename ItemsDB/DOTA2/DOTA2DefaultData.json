@@ -1,0 +1,70 @@
+[
+    {
+        "name": "DOTA2 Offers",
+        "image_url": "/images/misc_item/dota2_offers.png",
+        "appID": 570,
+        "descriptions": {
+            "type": "A random item for DOTA 2!",
+            "rarity": {
+                "name": "Common",
+                "color": "#B0C3D9"
+            },
+            "quality": {
+                "name": "Corrupted",
+                "color": "#A52A2A"
+            }
+        },
+        "query": ""
+    },
+    {
+        "name": "Wildcard/Any TF2 Item",
+        "image_url": "/images/misc_item/any.png",
+        "appID": 570,
+        "descriptions": {
+            "type": "When used in search, will match any item for DOTA2.",
+            "rarity": {
+                "name": "Common",
+                "color": "#B0C3D9"
+            },
+            "quality": {
+                "name": "Corrupted",
+                "color": "#A52A2A"
+            }
+        },
+        "query": ""
+    },
+    {
+        "name": "Real World Money - DOTA2",
+        "image_url": "/images/misc_item/cash.png",
+        "appID": 570,
+        "descriptions": {
+            "type": "Trade real world money at your own risk.When used in search, will match real money for DOTA2.",
+            "rarity": {
+                "name": "Common",
+                "color": "#B0C3D9"
+            },
+            "quality": {
+                "name": "Corrupted",
+                "color": "#A52A2A"
+            }
+        },
+        "query": "CASH"
+    },
+    {
+        "name": "Cryptocurrency - DOTA2",
+        "image_url": "/images/misc_item/crypto.png",
+        "appID": 570,
+        "descriptions": {
+            "type": "Trade in cryptocurrency at your own risk.When used in search, will match cryptocurrency for DOTA2.",
+            "rarity": {
+                "name": "Common",
+                "color": "#B0C3D9"
+            },
+            "quality": {
+                "name": "Corrupted",
+                "color": "#A52A2A"
+            }
+        },
+        "query": "CRYPTO"
+    }
+]

@@ -1,0 +1,55 @@
+<div class="stats-quick-links-container">
+    <div class="post-stats">
+        <div class="post-stat">
+            <div class="post-stat-icon-wrapper"><svg class="post-stat-icon" xmlns="http://www.w3.org/2000/svg"
+                    height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z" />
+                </svg></div>
+            <div class="post-stat-counter">
+                <%= post.views%>
+            </div>
+        </div>
+        <div class="post-stat">
+            <div class="post-stat-icon-wrapper"><svg class="post-stat-icon" xmlns="http://www.w3.org/2000/svg"
+                    enable-background="new 0 0 24 24" height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                    <g>
+                        <path d="M0,0h24v24H0V0z" fill="none" />
+                        <path d="M0,0h24v24H0V0z" fill="none" />
+                    </g>
+                    <g>
+                        <path
+                            d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z" />
+                    </g>
+                </svg></div>
+            <div class="post-stat-counter">
+                <%= post.bookmarks %>
+            </div>
+        </div>
+    </div>
+    <div class="post-quick-links">
+        <%if(post.owner.tradeUrl){%>
+            <div class="send-trade-offer-icon post-stat-icon-wrapper g-tooltip">
+                <a href="<%=post.owner.tradeUrl%>" target="_blank">
+                    <svg class="post-trade-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="white" width="18px" height="18px">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z" />
+                    </svg>
+                </a>
+                <span class="g-tooltiptext" style="font-size: 0.9em;">Send trade offer</span>
+            </div>
+            <%}%>
+                <div class="add-on-steam-icon post-stat-icon-wrapper g-tooltip">
+                    <a href="<%=post.owner.profileUrl%>" target="_blank"><svg class="post-trade-link-icon"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="18px"
+                            height="18px">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                        </svg>
+                    </a>
+                    <span class="g-tooltiptext" style="font-size: 0.9em;">Add on steam</span>
+                </div>
+    </div>
+</div>

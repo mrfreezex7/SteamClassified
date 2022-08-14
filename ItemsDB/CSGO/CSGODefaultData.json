@@ -1,0 +1,66 @@
+[
+    {
+        "name": "CSGO Offers",
+        "image_url": "/images/misc_item/csgo_offers.png",
+        "appID": 730,
+        "descriptions": {
+            "type": "A random item for CSGO!",
+            "rarity": {
+                "name": "Remarkable",
+                "color": "#8847FF"
+            },
+            "quality": {
+                "name": "Normal"
+            }
+        },
+        "query": ""
+    },
+    {
+        "name": "Wildcard/Any CSGO Item",
+        "image_url": "/images/misc_item/any.png",
+        "appID": 730,
+        "descriptions": {
+            "type": "When used in search, will match any item for CSGO.",
+            "rarity": {
+                "name": "Remarkable",
+                "color": "#8847FF"
+            },
+            "quality": {
+                "name": "Normal"
+            }
+        },
+        "query": ""
+    },
+    {
+        "name": "Real World Money - CSGO",
+        "image_url": "/images/misc_item/cash.png",
+        "appID": 730,
+        "descriptions": {
+            "type": "Trade real world money at your own risk.When used in search, will match real money for CSGO.",
+            "rarity": {
+                "name": "Remarkable",
+                "color": "#8847FF"
+            },
+            "quality": {
+                "name": "Normal"
+            }
+        },
+        "query": "CASH"
+    },
+    {
+        "name": "Cryptocurrency - CSGO",
+        "image_url": "/images/misc_item/crypto.png",
+        "appID": 730,
+        "descriptions": {
+            "type": "Trade in cryptocurrency at your own risk.When used in search, will match cryptocurrency for CSGO.",
+            "rarity": {
+                "name": "Remarkable",
+                "color": "#8847FF"
+            },
+            "quality": {
+                "name": "Normal"
+            }
+        },
+        "query": "CRYPTO"
+    }
+]

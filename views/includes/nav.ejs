@@ -1,0 +1,175 @@
+<nav class="nav-links-container">
+    <div class="nav-links-wrapper-small">
+        <li class="nav-link-item "><a href="/">
+                <div class="nav-item-wrapper">
+                    <img class="nav-item-logo" src="/img/logo.png" alt="logo">
+                </div>
+            </a>
+        </li>
+        <li class="nav-link-item">
+            <div class="nav-item-wrapper" @click="HamburgerBtnClick()">
+                <svg class="nav-item-hambuger-logo" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24"
+                    width="18px" fill="#FFFFFF">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+            </div>
+        </li>
+    </div>
+    <ul id="hamburger-data" class="nav-links-wrapper container hambuger-hidden">
+        <li class="nav-link-item nav-link-item-logo-big"><a href="/">
+                <div class="nav-item-wrapper nav-item-wrapper-small">
+                    <img class="nav-item-logo" src="/img/logo.png" alt="logo">
+                </div>
+            </a>
+        </li>
+        <li class="nav-link-item nav-link-item-hoverable nav-link-item-small"><a href="/trades">
+                <div class="nav-item-wrapper nav-item-wrapper-small">
+                    <svg class="nav-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                        width="18px" height="18px">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z" />
+                    </svg>
+
+                    <p class="icon-name">My Trades</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-link-item nav-link-item-hoverable nav-link-item-small"><a href="/offers">
+                <div class="nav-item-wrapper nav-item-wrapper-small">
+                    <div class="svg-icon">
+                        <svg class="nav-link-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                            height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                            <g>
+                                <rect fill="none" height="24" width="24" />
+                                <path
+                                    d="M13.25,16.74c0,0.69-0.53,1.26-1.25,1.26c-0.7,0-1.26-0.56-1.26-1.26c0-0.71,0.56-1.25,1.26-1.25 C12.71,15.49,13.25,16.04,13.25,16.74z M11.99,6c-1.77,0-2.98,1.15-3.43,2.49l1.64,0.69c0.22-0.67,0.74-1.48,1.8-1.48 c1.62,0,1.94,1.52,1.37,2.33c-0.54,0.77-1.47,1.29-1.96,2.16c-0.39,0.69-0.31,1.49-0.31,1.98h1.82c0-0.93,0.07-1.12,0.22-1.41 c0.39-0.72,1.11-1.06,1.87-2.17c0.68-1,0.42-2.36-0.02-3.08C14.48,6.67,13.47,6,11.99,6z M19,5H5v14h14V5 M19,3c1.1,0,2,0.9,2,2v14 c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5c0-1.1,0.9-2,2-2H19L19,3z" />
+                            </g>
+                        </svg>
+                    </div>
+
+                    <p class="icon-name">My Offers</p>
+
+
+                </div>
+            </a></li>
+        <li class="nav-link-item nav-link-item-hoverable nav-link-item-small"><a href="/bookmarks">
+                <div class="nav-item-wrapper nav-item-wrapper-small">
+                    <svg class="nav-link-icon" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24"
+                        width="18px" fill="#FFFFFF">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z" />
+                    </svg>
+
+                    <p class="icon-name">Bookmarks</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-link-item nav-link-item-hoverable nav-link-item-small">
+            <a href="/search">
+                <div class="nav-item-wrapper nav-item-wrapper-small">
+                    <svg class="nav-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                        width="18px" height="18px">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                    </svg>
+
+                    <p class="icon-name">Search</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-link-item nav-link-item-hoverable nav-link-item-small"><a href="/create">
+                <div class="nav-item-wrapper nav-item-wrapper-small">
+                    <svg class="nav-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                        width="18px" height="18px">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                    </svg>
+
+                    <p class="icon-name">New Trade</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-link-item login-btn-container nav-link-item-small">
+            <% if(!user) {%>
+                <a href="/auth/steam" class="login-btn-container">
+                    <!-- <h4 class="login-btn">Login with Steam</h4> -->
+                    <img src="/img/sits_02.png" alt="sign in" class="steam-sign-in-logo" style="width: 100%;">
+                </a>
+                <%} else {%>
+                    <%- include('global-notifications.ejs')%>
+                        <div class="nav-profile-pic-container">
+                            <div class="nav-profile-pic-wrapper" @click="ToggleProfilePicDropdown()">
+                                <img class="nav-profile-pic" style=<%='border-color:' +user.roleColor%> loading="lazy"
+                                src="<%=user.profilePic %>"
+                                    alt="<%=user.name %>">
+                            </div>
+                            <div class="nav-profile-pic-dropdown-container" v-if="ProfilePicDropdown.active"
+                                v-on-clickaway="ProfilePicDropdownClickAway">
+                                <ul>
+                                    <li>
+                                        <a href="/user/<%=user.userId%>" class="nav-profile-pic-dropdown-link">
+                                            <svg class="nav-profile-pic-dropdown-icon"
+                                                xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24"
+                                                width="18px" fill="#FFFFFF">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path
+                                                    d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                            </svg>
+                                            <p class="nav-profile-pic-dropdown-text">Profile</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/settings" class="nav-profile-pic-dropdown-link"> <svg
+                                                class="nav-profile-pic-dropdown-icon" xmlns="http://www.w3.org/2000/svg"
+                                                height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path
+                                                    d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+                                            </svg>
+                                            <p class="nav-profile-pic-dropdown-text">Settings</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/support" class="nav-profile-pic-dropdown-link">
+                                            <svg class="nav-profile-pic-dropdown-icon"
+                                                xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 20 20"
+                                                height="18px" viewBox="0 0 20 20" width="18px" fill="#FFFFFF">
+                                                <g>
+                                                    <rect fill="none" height="20" width="20" x="0" />
+                                                </g>
+                                                <g>
+                                                    <path
+                                                        d="M10,3c-3.87,0-7,3.13-7,7c0,3.87,3.13,7,7,7s7-3.13,7-7C17,6.13,13.87,3,10,3z M12.16,4.41c1.57,0.61,2.82,1.85,3.43,3.42 l-2.78,1.15c-0.3-0.83-0.96-1.49-1.79-1.79L12.16,4.41z M7.84,4.41L9,7.18c-0.85,0.3-1.51,0.96-1.82,1.81v0L4.41,7.84 C5.02,6.27,6.27,5.02,7.84,4.41z M7.83,15.59c-1.57-0.61-2.82-1.86-3.43-3.43l2.78-1.15v0c0.3,0.84,0.97,1.51,1.81,1.81L7.83,15.59 z M8,10c0-1.1,0.9-2,2-2s2,0.9,2,2c0,1.1-0.9,2-2,2S8,11.1,8,10z M12.17,15.59l-1.15-2.78c0.84-0.3,1.5-0.97,1.79-1.81l2.77,1.16 C14.98,13.74,13.74,14.98,12.17,15.59z" />
+                                                </g>
+                                            </svg>
+                                            <p class="nav-profile-pic-dropdown-text">Support</p>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/logout" class="nav-profile-pic-dropdown-link"> <svg
+                                                class="nav-profile-pic-dropdown-icon" xmlns="http://www.w3.org/2000/svg"
+                                                enable-background="new 0 0 24 24" height="18px" viewBox="0 0 24 24"
+                                                width="18px" fill="#FFFFFF">
+                                                <g>
+                                                    <path d="M0,0h24v24H0V0z" fill="none" />
+                                                </g>
+                                                <g>
+                                                    <path
+                                                        d="M17,8l-1.41,1.41L17.17,11H9v2h8.17l-1.58,1.58L17,16l4-4L17,8z M5,5h7V3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h7v-2H5V5z" />
+                                                </g>
+                                            </svg>
+                                            <p class="nav-profile-pic-dropdown-text">Logout</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <% }%>
+        </li>
+    </ul>
+</nav>

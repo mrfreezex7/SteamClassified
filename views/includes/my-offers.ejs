@@ -1,0 +1,39 @@
+<div class="trade-posts container">
+
+    <%if(posts.length<=0){%>
+        <div class="no-item-info-message">
+            You haven't made a single offer on a trade post yet!
+        </div>
+        <%}%>
+
+            <% posts.forEach(function(post) { %>
+
+                <div class="trade-post <%=post.active?'':'trade-post-closed'%>">
+
+                    <div class="post-header">
+                        <div class="post-user-data">
+                            <%- include('post-user-name.ejs', {post:post}) %>
+                                <a href="/trade/<%=post.postId%>" class="icon-wrapper"><svg class="icon new-link-icon"
+                                        xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24"
+                                        width="18px" fill="#FFFFFF">
+                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                                        <path
+                                            d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+                                    </svg></a>
+                        </div>
+                        <div class="post-time">
+                            <time datetime="<%=post.bump%>"></time>
+                        </div>
+                    </div>
+
+                    <%- include('post-items.ejs', {post:post,isEditable:false}) %>
+
+                        <%- include('post-notes.ejs', {post:post}) %>
+
+                </div>
+
+                <% }); %>
+
+</div>
+
+<%- include('item-tooltip.ejs') %>

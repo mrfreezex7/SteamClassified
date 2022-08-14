@@ -1,0 +1,36 @@
+<div class="report-modal-container" v-show="ManageUser.roleModal">
+
+    <div class="report-modal-wrapper">
+        <div class="report-modal-header">
+            <h4 class="report-modal-header-text">Update Role</h4>
+            <button class="report-modal-close-btn" @click="ManageUser.roleModal=false"><svg
+                    class="report-modal-close-icon" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24"
+                    width="18px" fill="#000000">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                </svg></button>
+        </div>
+        <div class="report-modal-inputs-container">
+            <select class="report-modal-select-input" v-model="ManageUser.selectedRole">
+                <option class="" value="404" selected disabled>Select a Role</option>
+                <option value="101" disabled>-----------------</option>
+                <option value="1">Moderator</option>
+                <option value="2">Member</option>
+                <option value="3">Premium</option>
+                <option value="410">Banned</option>
+            </select>
+        </div>
+        <div class="report-modal-actions-container">
+            <div class="submit-container report-submit-container">
+                <button class="cancel-report-modal-btn" @click="ManageUser.roleModal=false"
+                    v-if="!ManageUser.isUpdatingRole">Cancel</button>
+                <button class="report-modal-btn success-btn" @click="UpdateRole()"
+                    v-if="!ManageUser.isUpdatingRole">Update
+                    Role</button>
+                <div class="loader center-loader" style="font-size: 0.2em;" v-else></div>
+            </div>
+        </div>
+    </div>
+
+</div>

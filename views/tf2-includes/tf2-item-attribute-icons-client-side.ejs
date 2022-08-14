@@ -1,0 +1,41 @@
+<div class="item-attribute-icons-container" v-if="item.hasOwnProperty('descriptions')">
+
+    <svg v-if="item.descriptions.hasOwnProperty('killstreak')&&item.descriptions['killstreak']"
+        class="item-attribute-icon item-attribute-killstreak" xmlns="http://www.w3.org/2000/svg"
+        enable-background="new 0 0 20 20" height="18px" viewBox="0 0 20 20" width="18px" fill="#FFFFFF">
+        <g>
+            <rect fill="none" height="20" width="20" x="0" />
+        </g>
+        <g>
+            <polygon points="9.21,15 12.43,15 16,10 12.43,5 9.21,5 12.79,10" />
+            <polygon points="4.21,15 7.43,15 11,10 7.43,5 4.21,5 7.79,10" />
+        </g>
+    </svg>
+
+
+    <svg v-if="item.descriptions.hasOwnProperty('parts')&&item.descriptions['parts']"
+        class="item-attribute-icon item-attribute-parts" xmlns="http://www.w3.org/2000/svg"
+        enable-background="new 0 0 20 20" height="18px" viewBox="0 0 20 20" width="18px" fill="#FFFFFF">
+        <g>
+            <rect fill="none" height="20" width="20" x="0" />
+        </g>
+        <g>
+            <g>
+                <rect height="5.5" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -5.3383 13.8538)" width="2" x="13.05"
+                    y="10.62" />
+                <path
+                    d="M14.23,8.98c1.38,0,2.5-1.12,2.5-2.5c0-0.51-0.15-0.98-0.42-1.38l-2.08,2.08l-0.71-0.71l2.08-2.08 c-0.4-0.26-0.87-0.42-1.38-0.42c-1.38,0-2.5,1.12-2.5,2.5c0,0.32,0.07,0.63,0.18,0.91L10.69,8.6L9.64,7.54l0.71-0.71L8.93,5.42 L10.34,4C9.56,3.22,8.29,3.22,7.51,4L4.69,6.83l1.06,1.06l-2.13,0L3.27,8.24l2.83,2.83l0.35-0.35L6.46,8.6l1.06,1.06l0.71-0.71 l1.06,1.06l-4.6,4.6l1.41,1.41l7.22-7.22C13.6,8.91,13.91,8.98,14.23,8.98z" />
+            </g>
+        </g>
+    </svg>
+
+
+    <svg v-if="item.descriptions.hasOwnProperty('spells')&&item.descriptions['spells']"
+        class="item-attribute-icon item-attribute-spell" style="margin-left:0.1em;" xmlns="http://www.w3.org/2000/svg"
+        enable-background="new 0 0 20 20" height="18px" viewBox="0 0 20 20" width="18px" fill="#FFFFFF">
+        <rect fill="none" height="20" width="20" />
+        <path
+            d="M8.04,4.86C7.88,5.39,7.8,5.94,7.8,6.5c0,3.14,2.56,5.7,5.7,5.7c0.56,0,1.11-0.08,1.64-0.24c-0.79,2.07-2.8,3.54-5.14,3.54 c-3.03,0-5.5-2.47-5.5-5.5C4.5,7.66,5.97,5.65,8.04,4.86z M10,3c-3.87,0-7,3.13-7,7s3.13,7,7,7s7-3.13,7-7 c0-0.36-0.03-0.72-0.08-1.06C16.16,10,14.91,10.7,13.5,10.7c-2.32,0-4.2-1.88-4.2-4.2c0-1.41,0.7-2.66,1.76-3.42 C10.72,3.03,10.36,3,10,3L10,3z" />
+    </svg>
+
+</div>

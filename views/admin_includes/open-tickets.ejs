@@ -1,0 +1,46 @@
+<div class="ticket-data">
+
+    <%if(tickets.length<=0){%>
+        <div style="text-align: center;">There are no open tickets</div>
+        <%}else{%>
+            <table class="ticket-table-container" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr class="ticket-table-header-container">
+                        <th class="ticket-table-header-data">Ticket ID</th>
+                        <th class="ticket-table-header-data">Subject</th>
+                        <th class="ticket-table-header-data">Priority</th>
+                        <th class="ticket-table-header-data">Status</th>
+                        <th class="ticket-table-header-data">Date</th>
+                        <th class="ticket-table-header-data">Action</th>
+                    </tr>
+                </thead>
+                <%tickets.forEach(ticket=>{%>
+                    <tr class="ticket-table-data-container">
+                        <td class="ticket-table-data">
+                            <%=ticket.ticketId%>
+                        </td>
+                        <td class="ticket-table-data">
+                            <%=ticket.subject%>
+                        </td>
+                        <td class="ticket-table-data">Low</td>
+                        <td class="ticket-table-data">New</td>
+                        <td class="ticket-table-data">
+                            <time datetime="<%=ticket.createdAt%>"></time>
+                        </td>
+                        <td class="ticket-table-data">
+                            <%if(!ticket.hasOwnProperty('assignedTo')){%>
+                                <a href='/ticket/<%=ticket.ticketId%>' target="_blank"
+                                    class="ticket-table-action-btn">View</a>
+                                <%}else{%>
+                                    <p>
+                                        <%=ticket.assignedTo.name%>
+                                    </p>
+                                    <%}%>
+                        </td>
+                    </tr>
+                    <%})%>
+            </table>
+            <%}%>
+</div>
+
+<%- include('../includes/pagination.ejs',{url:'/admin/tickets/open/',maxNumberStart:6,maxNumberMiddle:2}) %>

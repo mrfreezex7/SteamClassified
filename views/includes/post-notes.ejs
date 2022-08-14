@@ -1,0 +1,9 @@
+<% if(post.notes !='' ) { %>
+    <div class="post-notes ql-editor"
+        style="max-height: 68px; overflow: hidden;transition: max-height .5s ease-in-out;">
+        <div class="inner-item">
+            <%- post.notes %>
+        </div>
+    </div>
+    <div class="read-more-btn hidden" @click="ReadMore">Read More</div>
+    <% } %>

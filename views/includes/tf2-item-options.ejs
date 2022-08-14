@@ -1,0 +1,1253 @@
+<div class="item-option-container" v-on-clickaway="ClickAway" v-if="!SlotOption.global.hidden"
+    :style="{top:SlotOption.global.top+'px',left:SlotOption.global.left+'px'}">
+    <select name="quality" class="item-option" v-model="SlotOption.quality" @change="UpdateItemOption()">
+        <option value="Unique">Unique</option>
+        <option value="Normal">Normal</option>
+        <option value="Vintage">Vintage</option>
+        <option value="Genuine">Genuine</option>
+        <option value="Strange">Strange</option>
+        <option value="Unusual">Unusual</option>
+        <option value="Haunted">Haunted</option>
+        <option value="Collectors">Collector's</option>
+        <option value="Decorated">Decorated</option>
+        <option value="Community">Community</option>
+        <option value="Self-Made">Self-Made</option>
+        <option value="Valve">Valve</option>
+    </select>
+    <select name="paint" class="item-option" v-model="SlotOption.paint" @change="UpdateItemOption()">
+        <option value="No_Paint">No Paint</option>
+        
+            <option value="A Color Similar to Slate">
+                A Color Similar to Slate
+            </option>
+            
+            <option value="A Deep Commitment to Purple">
+                A Deep Commitment to Purple
+            </option>
+            
+            <option value="A Distinctive Lack of Hue">
+                A Distinctive Lack of Hue
+            </option>
+            
+            <option value="A Mann&#39;s Mint">
+                A Mann&#39;s Mint
+            </option>
+            
+            <option value="After Eight">
+                After Eight
+            </option>
+            
+            <option value="Aged Moustache Grey">
+                Aged Moustache Grey
+            </option>
+            
+            <option value="An Extraordinary Abundance of Tinge">
+                An Extraordinary Abundance of Tinge
+            </option>
+            
+            <option value="Australium Gold">
+                Australium Gold
+            </option>
+            
+            <option value="Color No. 216-190-216">
+                Color No. 216-190-216
+            </option>
+            
+            <option value="Dark Salmon Injustice">
+                Dark Salmon Injustice
+            </option>
+            
+            <option value="Drably Olive">
+                Drably Olive
+            </option>
+            
+            <option value="Indubitably Green">
+                Indubitably Green
+            </option>
+            
+            <option value="Mann Co. Orange">
+                Mann Co. Orange
+            </option>
+            
+            <option value="Muskelmannbraun">
+                Muskelmannbraun
+            </option>
+            
+            <option value="Noble Hatter&#39;s Violet">
+                Noble Hatter&#39;s Violet
+            </option>
+            
+            <option value="Peculiarly Drab Tincture">
+                Peculiarly Drab Tincture
+            </option>
+            
+            <option value="Pink as Hell">
+                Pink as Hell
+            </option>
+            
+            <option value="Radigan Conagher Brown">
+                Radigan Conagher Brown
+            </option>
+            
+            <option value="The Bitter Taste of Defeat and Lime">
+                The Bitter Taste of Defeat and Lime
+            </option>
+            
+            <option value="The Color of a Gentlemann&#39;s Business Pants">
+                The Color of a Gentlemann&#39;s Business Pants
+            </option>
+            
+            <option value="Ye Olde Rustic Colour">
+                Ye Olde Rustic Colour
+            </option>
+            
+            <option value="Zepheniah&#39;s Greed">
+                Zepheniah&#39;s Greed
+            </option>
+            
+            <option value="An Air of Debonair">
+                An Air of Debonair
+            </option>
+            
+            <option value="Balaclavas Are Forever">
+                Balaclavas Are Forever
+            </option>
+            
+            <option value="Cream Spirit">
+                Cream Spirit
+            </option>
+            
+            <option value="Operator&#39;s Overalls">
+                Operator&#39;s Overalls
+            </option>
+            
+            <option value="Team Spirit">
+                Team Spirit
+            </option>
+            
+            <option value="The Value of Teamwork">
+                The Value of Teamwork
+            </option>
+            
+            <option value="Waterlogged Lab Coat">
+                Waterlogged Lab Coat
+            </option>
+            
+    </select>
+    <select name="effect" class="item-option" v-model="SlotOption.effect" @change="UpdateItemOption()">
+        <option value="No_Effect">
+            No Effect
+        </option>
+        
+            <option value="Community Sparkle">
+                Community Sparkle
+            </option>
+            
+            <option value="Holy Glow">
+                Holy Glow
+            </option>
+            
+            <option value="Green Confetti">
+                Green Confetti
+            </option>
+            
+            <option value="Purple Confetti">
+                Purple Confetti
+            </option>
+            
+            <option value="Haunted Ghosts">
+                Haunted Ghosts
+            </option>
+            
+            <option value="Green Energy">
+                Green Energy
+            </option>
+            
+            <option value="Purple Energy">
+                Purple Energy
+            </option>
+            
+            <option value="Circling TF Logo">
+                Circling TF Logo
+            </option>
+            
+            <option value="Massed Flies">
+                Massed Flies
+            </option>
+            
+            <option value="Burning Flames">
+                Burning Flames
+            </option>
+            
+            <option value="Scorching Flames">
+                Scorching Flames
+            </option>
+            
+            <option value="Sunbeams">
+                Sunbeams
+            </option>
+            
+            <option value="Map Stamps">
+                Map Stamps
+            </option>
+            
+            <option value="Stormy Storm">
+                Stormy Storm
+            </option>
+            
+            <option value="Orbiting Fire">
+                Orbiting Fire
+            </option>
+            
+            <option value="Bubbling">
+                Bubbling
+            </option>
+            
+            <option value="Smoking">
+                Smoking
+            </option>
+            
+            <option value="Steaming">
+                Steaming
+            </option>
+            
+            <option value="Cloudy Moon">
+                Cloudy Moon
+            </option>
+            
+            <option value="Kill-a-Watt">
+                Kill-a-Watt
+            </option>
+            
+            <option value="Terror-Watt">
+                Terror-Watt
+            </option>
+            
+            <option value="Cloud 9">
+                Cloud 9
+            </option>
+            
+            <option value="Time Warp">
+                Time Warp
+            </option>
+            
+            <option value="Searing Plasma">
+                Searing Plasma
+            </option>
+            
+            <option value="Vivid Plasma">
+                Vivid Plasma
+            </option>
+            
+            <option value="Circling Peace Sign">
+                Circling Peace Sign
+            </option>
+            
+            <option value="Circling Heart">
+                Circling Heart
+            </option>
+            
+            <option value="Blizzardy Storm">
+                Blizzardy Storm
+            </option>
+            
+            <option value="Nuts n&#39; Bolts">
+                Nuts n&#39; Bolts
+            </option>
+            
+            <option value="Orbiting Planets">
+                Orbiting Planets
+            </option>
+            
+            <option value="Flaming Lantern">
+                Flaming Lantern
+            </option>
+            
+            <option value="Cauldron Bubbles">
+                Cauldron Bubbles
+            </option>
+            
+            <option value="Eerie Orbiting Fire">
+                Eerie Orbiting Fire
+            </option>
+            
+            <option value="Knifestorm">
+                Knifestorm
+            </option>
+            
+            <option value="Misty Skull">
+                Misty Skull
+            </option>
+            
+            <option value="Harvest Moon">
+                Harvest Moon
+            </option>
+            
+            <option value="It&#39;s A Secret To Everybody">
+                It&#39;s A Secret To Everybody
+            </option>
+            
+            <option value="Stormy 13th Hour">
+                Stormy 13th Hour
+            </option>
+            
+            <option value="Aces High">
+                Aces High
+            </option>
+            
+            <option value="Dead Presidents">
+                Dead Presidents
+            </option>
+            
+            <option value="Miami Nights">
+                Miami Nights
+            </option>
+            
+            <option value="Disco Beat Down">
+                Disco Beat Down
+            </option>
+            
+            <option value="Phosphorous">
+                Phosphorous
+            </option>
+            
+            <option value="Sulphurous">
+                Sulphurous
+            </option>
+            
+            <option value="Memory Leak">
+                Memory Leak
+            </option>
+            
+            <option value="Overclocked">
+                Overclocked
+            </option>
+            
+            <option value="Electrostatic">
+                Electrostatic
+            </option>
+            
+            <option value="Power Surge">
+                Power Surge
+            </option>
+            
+            <option value="Anti-Freeze">
+                Anti-Freeze
+            </option>
+            
+            <option value="Green Black Hole">
+                Green Black Hole
+            </option>
+            
+            <option value="Roboactive">
+                Roboactive
+            </option>
+            
+            <option value="Arcana">
+                Arcana
+            </option>
+            
+            <option value="Spellbound">
+                Spellbound
+            </option>
+            
+            <option value="Chiroptera Venenata">
+                Chiroptera Venenata
+            </option>
+            
+            <option value="Poisoned Shadows">
+                Poisoned Shadows
+            </option>
+            
+            <option value="Something Burning This Way Comes">
+                Something Burning This Way Comes
+            </option>
+            
+            <option value="Hellfire">
+                Hellfire
+            </option>
+            
+            <option value="Darkblaze">
+                Darkblaze
+            </option>
+            
+            <option value="Demonflame">
+                Demonflame
+            </option>
+            
+            <option value="Showstopper">
+                Showstopper
+            </option>
+            
+            <option value="Holy Grail">
+                Holy Grail
+            </option>
+            
+            <option value="&#39;72">
+                &#39;72
+            </option>
+            
+            <option value="Fountain of Delight">
+                Fountain of Delight
+            </option>
+            
+            <option value="Screaming Tiger">
+                Screaming Tiger
+            </option>
+            
+            <option value="Skill Gotten Gains">
+                Skill Gotten Gains
+            </option>
+            
+            <option value="Midnight Whirlwind">
+                Midnight Whirlwind
+            </option>
+            
+            <option value="Silver Cyclone">
+                Silver Cyclone
+            </option>
+            
+            <option value="Mega Strike">
+                Mega Strike
+            </option>
+            
+            <option value="Bonzo The All-Gnawing">
+                Bonzo The All-Gnawing
+            </option>
+            
+            <option value="Amaranthine">
+                Amaranthine
+            </option>
+            
+            <option value="Stare From Beyond">
+                Stare From Beyond
+            </option>
+            
+            <option value="The Ooze">
+                The Ooze
+            </option>
+            
+            <option value="Ghastly Ghosts Jr">
+                Ghastly Ghosts Jr
+            </option>
+            
+            <option value="Haunted Phantasm Jr">
+                Haunted Phantasm Jr
+            </option>
+            
+            <option value="Haunted Phantasm">
+                Haunted Phantasm
+            </option>
+            
+            <option value="Ghastly Ghosts">
+                Ghastly Ghosts
+            </option>
+            
+            <option value="Frostbite">
+                Frostbite
+            </option>
+            
+            <option value="Molten Mallard">
+                Molten Mallard
+            </option>
+            
+            <option value="Morning Glory">
+                Morning Glory
+            </option>
+            
+            <option value="Death at Dusk">
+                Death at Dusk
+            </option>
+            
+            <option value="Hot">
+                Hot
+            </option>
+            
+            <option value="Isotope">
+                Isotope
+            </option>
+            
+            <option value="Cool">
+                Cool
+            </option>
+            
+            <option value="Energy Orb">
+                Energy Orb
+            </option>
+            
+            <option value="Abduction">
+                Abduction
+            </option>
+            
+            <option value="Atomic">
+                Atomic
+            </option>
+            
+            <option value="Subatomic">
+                Subatomic
+            </option>
+            
+            <option value="Electric Hat Protector">
+                Electric Hat Protector
+            </option>
+            
+            <option value="Magnetic Hat Protector">
+                Magnetic Hat Protector
+            </option>
+            
+            <option value="Voltaic Hat Protector">
+                Voltaic Hat Protector
+            </option>
+            
+            <option value="Galactic Codex">
+                Galactic Codex
+            </option>
+            
+            <option value="Ancient Codex">
+                Ancient Codex
+            </option>
+            
+            <option value="Nebula">
+                Nebula
+            </option>
+            
+            <option value="Death by Disco">
+                Death by Disco
+            </option>
+            
+            <option value="It&#39;s a mystery to everyone">
+                It&#39;s a mystery to everyone
+            </option>
+            
+            <option value="It&#39;s a puzzle to me">
+                It&#39;s a puzzle to me
+            </option>
+            
+            <option value="Ether Trail">
+                Ether Trail
+            </option>
+            
+            <option value="Nether Trail">
+                Nether Trail
+            </option>
+            
+            <option value="Ancient Eldritch">
+                Ancient Eldritch
+            </option>
+            
+            <option value="Eldritch Flame">
+                Eldritch Flame
+            </option>
+            
+            <option value="Tesla Coil">
+                Tesla Coil
+            </option>
+            
+            <option value="Neutron Star">
+                Neutron Star
+            </option>
+            
+            <option value="Starstorm Insomnia">
+                Starstorm Insomnia
+            </option>
+            
+            <option value="Starstorm Slumber">
+                Starstorm Slumber
+            </option>
+            
+            <option value="Infernal Flames">
+                Infernal Flames
+            </option>
+            
+            <option value="Hellish Inferno">
+                Hellish Inferno
+            </option>
+            
+            <option value="Spectral Swirl">
+                Spectral Swirl
+            </option>
+            
+            <option value="Infernal Smoke">
+                Infernal Smoke
+            </option>
+            
+            <option value="Brain Drain">
+                Brain Drain
+            </option>
+            
+            <option value="Open Mind">
+                Open Mind
+            </option>
+            
+            <option value="Head of Steam">
+                Head of Steam
+            </option>
+            
+            <option value="Galactic Gateway">
+                Galactic Gateway
+            </option>
+            
+            <option value="The Eldritch Opening">
+                The Eldritch Opening
+            </option>
+            
+            <option value="The Dark Doorway">
+                The Dark Doorway
+            </option>
+            
+            <option value="Ring of Fire">
+                Ring of Fire
+            </option>
+            
+            <option value="Vicious Circle">
+                Vicious Circle
+            </option>
+            
+            <option value="White Lightning">
+                White Lightning
+            </option>
+            
+            <option value="Omniscient Orb">
+                Omniscient Orb
+            </option>
+            
+            <option value="Clairvoyance">
+                Clairvoyance
+            </option>
+            
+            <option value="Acidic Bubbles of Envy">
+                Acidic Bubbles of Envy
+            </option>
+            
+            <option value="Flammable Bubbles of Attraction">
+                Flammable Bubbles of Attraction
+            </option>
+            
+            <option value="Poisonous Bubbles of Regret">
+                Poisonous Bubbles of Regret
+            </option>
+            
+            <option value="Roaring Rockets">
+                Roaring Rockets
+            </option>
+            
+            <option value="Spooky Night">
+                Spooky Night
+            </option>
+            
+            <option value="Ominous Night">
+                Ominous Night
+            </option>
+            
+            <option value="Fifth Dimension">
+                Fifth Dimension
+            </option>
+            
+            <option value="Vicious Vortex">
+                Vicious Vortex
+            </option>
+            
+            <option value="Menacing Miasma">
+                Menacing Miasma
+            </option>
+            
+            <option value="Abyssal Aura">
+                Abyssal Aura
+            </option>
+            
+            <option value="Wicked Wood">
+                Wicked Wood
+            </option>
+            
+            <option value="Ghastly Grove">
+                Ghastly Grove
+            </option>
+            
+            <option value="Mystical Medley">
+                Mystical Medley
+            </option>
+            
+            <option value="Ethereal Essence">
+                Ethereal Essence
+            </option>
+            
+            <option value="Twisted Radiance">
+                Twisted Radiance
+            </option>
+            
+            <option value="Violet Vortex">
+                Violet Vortex
+            </option>
+            
+            <option value="Verdant Vortex">
+                Verdant Vortex
+            </option>
+            
+            <option value="Valiant Vortex">
+                Valiant Vortex
+            </option>
+            
+            <option value="Bewitched">
+                Bewitched
+            </option>
+            
+            <option value="Accursed">
+                Accursed
+            </option>
+            
+            <option value="Enchanted">
+                Enchanted
+            </option>
+            
+            <option value="Static Mist">
+                Static Mist
+            </option>
+            
+            <option value="Eerie Lightning">
+                Eerie Lightning
+            </option>
+            
+            <option value="Terrifying Thunder">
+                Terrifying Thunder
+            </option>
+            
+            <option value="Jarate Shock">
+                Jarate Shock
+            </option>
+            
+            <option value="Nether Void">
+                Nether Void
+            </option>
+            
+            <option value="Sparkling Lights">
+                Sparkling Lights
+            </option>
+            
+            <option value="Frozen Icefall">
+                Frozen Icefall
+            </option>
+            
+            <option value="Fragmented Gluons">
+                Fragmented Gluons
+            </option>
+            
+            <option value="Fragmented Quarks">
+                Fragmented Quarks
+            </option>
+            
+            <option value="Fragmented Photons">
+                Fragmented Photons
+            </option>
+            
+            <option value="Defragmenting Reality">
+                Defragmenting Reality
+            </option>
+            
+            <option value="Fragmenting Reality">
+                Fragmenting Reality
+            </option>
+            
+            <option value="Refragmenting Reality">
+                Refragmenting Reality
+            </option>
+            
+            <option value="Snowfallen">
+                Snowfallen
+            </option>
+            
+            <option value="Snowblinded">
+                Snowblinded
+            </option>
+            
+            <option value="Pyroland Daydream">
+                Pyroland Daydream
+            </option>
+            
+            <option value="Good-Hearted Goodies">
+                Good-Hearted Goodies
+            </option>
+            
+            <option value="Wintery Wisp">
+                Wintery Wisp
+            </option>
+            
+            <option value="Arctic Aurora">
+                Arctic Aurora
+            </option>
+            
+            <option value="Winter Spirit">
+                Winter Spirit
+            </option>
+            
+            <option value="Festive Spirit">
+                Festive Spirit
+            </option>
+            
+            <option value="Magical Spirit">
+                Magical Spirit
+            </option>
+            
+            <option value="Verdatica">
+                Verdatica
+            </option>
+            
+            <option value="Aromatica">
+                Aromatica
+            </option>
+            
+            <option value="Chromatica">
+                Chromatica
+            </option>
+            
+            <option value="Prismatica">
+                Prismatica
+            </option>
+            
+            <option value="Bee Swarm">
+                Bee Swarm
+            </option>
+            
+            <option value="Frisky Fireflies">
+                Frisky Fireflies
+            </option>
+            
+            <option value="Smoldering Spirits">
+                Smoldering Spirits
+            </option>
+            
+            <option value="Wandering Wisps">
+                Wandering Wisps
+            </option>
+            
+            <option value="Kaleidoscope">
+                Kaleidoscope
+            </option>
+            
+            <option value="Green Giggler">
+                Green Giggler
+            </option>
+            
+            <option value="Laugh-O-Lantern">
+                Laugh-O-Lantern
+            </option>
+            
+            <option value="Plum Prankster">
+                Plum Prankster
+            </option>
+            
+            <option value="Pyroland Nightmare">
+                Pyroland Nightmare
+            </option>
+            
+            <option value="Gravelly Ghoul">
+                Gravelly Ghoul
+            </option>
+            
+            <option value="Vexed Volcanics">
+                Vexed Volcanics
+            </option>
+            
+            <option value="Gourdian Angel">
+                Gourdian Angel
+            </option>
+            
+            <option value="Pumpkin Party">
+                Pumpkin Party
+            </option>
+            
+            <option value="Spectral Escort">
+                Spectral Escort
+            </option>
+            
+            <option value="Astral Presence">
+                Astral Presence
+            </option>
+            
+            <option value="Arcane Assistance">
+                Arcane Assistance
+            </option>
+            
+            <option value="Emerald Allurement">
+                Emerald Allurement
+            </option>
+            
+            <option value="Pyrophoric Personality">
+                Pyrophoric Personality
+            </option>
+            
+            <option value="Spellbound Aspect">
+                Spellbound Aspect
+            </option>
+            
+            <option value="Static Shock">
+                Static Shock
+            </option>
+            
+            <option value="Veno Shock">
+                Veno Shock
+            </option>
+            
+            <option value="Toxic Terrors">
+                Toxic Terrors
+            </option>
+            
+            <option value="Arachnid Assault">
+                Arachnid Assault
+            </option>
+            
+            <option value="Creepy Crawlies">
+                Creepy Crawlies
+            </option>
+            
+            <option value="Frozen Fractals">
+                Frozen Fractals
+            </option>
+            
+            <option value="Lavender Landfall">
+                Lavender Landfall
+            </option>
+            
+            <option value="Special Snowfall">
+                Special Snowfall
+            </option>
+            
+            <option value="Divine Desire">
+                Divine Desire
+            </option>
+            
+            <option value="Distant Dream">
+                Distant Dream
+            </option>
+            
+            <option value="Violent Wintertide">
+                Violent Wintertide
+            </option>
+            
+            <option value="Blighted Snowstorm">
+                Blighted Snowstorm
+            </option>
+            
+            <option value="Pale Nimbus">
+                Pale Nimbus
+            </option>
+            
+            <option value="Genus Plasmos">
+                Genus Plasmos
+            </option>
+            
+            <option value="Serenus Lumen">
+                Serenus Lumen
+            </option>
+            
+            <option value="Ventum Maris">
+                Ventum Maris
+            </option>
+            
+            <option value="Mirthful Mistletoe">
+                Mirthful Mistletoe
+            </option>
+            
+            <option value="Delightful Star">
+                Delightful Star
+            </option>
+            
+            <option value="Frosted Star">
+                Frosted Star
+            </option>
+            
+            <option value="Apotheosis">
+                Apotheosis
+            </option>
+            
+            <option value="Ascension">
+                Ascension
+            </option>
+            
+            <option value="Reindoonicorn Rancher">
+                Reindoonicorn Rancher
+            </option>
+            
+            <option value="Twinkling Lights">
+                Twinkling Lights
+            </option>
+            
+            <option value="Shimmering Lights">
+                Shimmering Lights
+            </option>
+            
+            <option value="Resonation">
+                Resonation
+            </option>
+            
+            <option value="Aggradation">
+                Aggradation
+            </option>
+            
+            <option value="Lucidation">
+                Lucidation
+            </option>
+            
+            <option value="Stunning">
+                Stunning
+            </option>
+            
+            <option value="Ardentum Saturnalis">
+                Ardentum Saturnalis
+            </option>
+            
+            <option value="Fragrancium Elementalis">
+                Fragrancium Elementalis
+            </option>
+            
+            <option value="Reverium Irregularis">
+                Reverium Irregularis
+            </option>
+            
+            <option value="Perennial Petals">
+                Perennial Petals
+            </option>
+            
+            <option value="Flavorsome Sunset">
+                Flavorsome Sunset
+            </option>
+            
+            <option value="Raspberry Bloom">
+                Raspberry Bloom
+            </option>
+            
+            <option value="Iridescence">
+                Iridescence
+            </option>
+            
+    </select>
+    <select name="killstreak" class="item-option" v-model="SlotOption.killstreak" @change="UpdateItemOption()">
+        <option value="No_Killstreak">No Killstreak</option>
+        <option value="Normal">Normal</option>
+        <option value="Specialized">Specialized</option>
+        <option value="Professional">Professional</option>
+    </select>
+    <select name="parts" class="item-option" v-model="SlotOption.parts" @change="UpdateItemOption()">
+        <option value="No_Parts">No Parts</option>
+        
+            <option value="Strange Part: Airborne Enemies Killed">
+                Strange Part: Airborne Enemies Killed
+            </option>
+            
+            <option value="Strange Part: Heavies Killed">
+                Strange Part: Heavies Killed
+            </option>
+            
+            <option value="Strange Part: Demomen Killed">
+                Strange Part: Demomen Killed
+            </option>
+            
+            <option value="Strange Part: Revenge Kills">
+                Strange Part: Revenge Kills
+            </option>
+            
+            <option value="Strange Part: Domination Kills">
+                Strange Part: Domination Kills
+            </option>
+            
+            <option value="Strange Part: Soldiers Killed">
+                Strange Part: Soldiers Killed
+            </option>
+            
+            <option value="Strange Part: Full Moon Kills">
+                Strange Part: Full Moon Kills
+            </option>
+            
+            <option value="Strange Part: Cloaked Spies Killed">
+                Strange Part: Cloaked Spies Killed
+            </option>
+            
+            <option value="Strange Part: Scouts Killed">
+                Strange Part: Scouts Killed
+            </option>
+            
+            <option value="Strange Part: Engineers Killed">
+                Strange Part: Engineers Killed
+            </option>
+            
+            <option value="Strange Part: Robots Destroyed">
+                Strange Part: Robots Destroyed
+            </option>
+            
+            <option value="Strange Part: Low-Health Kills">
+                Strange Part: Low-Health Kills
+            </option>
+            
+            <option value="Strange Part: Halloween Kills">
+                Strange Part: Halloween Kills
+            </option>
+            
+            <option value="Strange Part: Robots Destroyed During Halloween">
+                Strange Part: Robots Destroyed During Halloween
+            </option>
+            
+            <option value="Strange Part: Underwater Kills">
+                Strange Part: Underwater Kills
+            </option>
+            
+            <option value="Strange Part: Snipers Killed">
+                Strange Part: Snipers Killed
+            </option>
+            
+            <option value="Strange Part: Kills While Übercharged">
+                Strange Part: Kills While Übercharged
+            </option>
+            
+            <option value="Strange Part: Pyros Killed">
+                Strange Part: Pyros Killed
+            </option>
+            
+            <option value="Strange Part: Defender Kills">
+                Strange Part: Defender Kills
+            </option>
+            
+            <option value="Strange Part: Medics Killed">
+                Strange Part: Medics Killed
+            </option>
+            
+            <option value="Strange Part: Tanks Destroyed">
+                Strange Part: Tanks Destroyed
+            </option>
+            
+            <option value="Strange Part: Medics Killed That Have Full ÜberCharge">
+                Strange Part: Medics Killed That Have Full ÜberCharge
+            </option>
+            
+            <option value="Strange Part: Giant Robots Destroyed">
+                Strange Part: Giant Robots Destroyed
+            </option>
+            
+            <option value="Strange Part: Kills During Victory Time">
+                Strange Part: Kills During Victory Time
+            </option>
+            
+            <option value="Strange Part: Robot Spies Destroyed">
+                Strange Part: Robot Spies Destroyed
+            </option>
+            
+            <option value="Strange Part: Unusual-Wearing Player Kills">
+                Strange Part: Unusual-Wearing Player Kills
+            </option>
+            
+            <option value="Strange Part: Spies Killed">
+                Strange Part: Spies Killed
+            </option>
+            
+            <option value="Strange Part: Burning Enemy Kills">
+                Strange Part: Burning Enemy Kills
+            </option>
+            
+            <option value="Strange Part: Killstreaks Ended">
+                Strange Part: Killstreaks Ended
+            </option>
+            
+            <option value="Strange Part: Damage Dealt">
+                Strange Part: Damage Dealt
+            </option>
+            
+            <option value="Strange Part: Point-Blank Kills">
+                Strange Part: Point-Blank Kills
+            </option>
+            
+            <option value="Strange Part: Full Health Kills">
+                Strange Part: Full Health Kills
+            </option>
+            
+            <option value="Strange Part: Robot Scouts Destroyed">
+                Strange Part: Robot Scouts Destroyed
+            </option>
+            
+            <option value="Strange Part: Taunting Player Kills">
+                Strange Part: Taunting Player Kills
+            </option>
+            
+            <option value="Strange Part: Not Crit nor MiniCrit Kills">
+                Strange Part: Not Crit nor MiniCrit Kills
+            </option>
+            
+            <option value="Strange Part: Player Hits">
+                Strange Part: Player Hits
+            </option>
+            
+            <option value="Strange Part: Gib Kills">
+                Strange Part: Gib Kills
+            </option>
+            
+            <option value="Strange Part: Buildings Destroyed">
+                Strange Part: Buildings Destroyed
+            </option>
+            
+            <option value="Strange Part: Headshot Kills">
+                Strange Part: Headshot Kills
+            </option>
+            
+            <option value="Strange Part: Projectiles Reflected">
+                Strange Part: Projectiles Reflected
+            </option>
+            
+            <option value="Strange Part: Allies Extinguished">
+                Strange Part: Allies Extinguished
+            </option>
+            
+            <option value="Strange Part: Posthumous Kills">
+                Strange Part: Posthumous Kills
+            </option>
+            
+            <option value="Strange Part: Critical Kills">
+                Strange Part: Critical Kills
+            </option>
+            
+            <option value="Strange Part: Kills While Explosive Jumping">
+                Strange Part: Kills While Explosive Jumping
+            </option>
+            
+            <option value="Strange Part: Sappers Destroyed">
+                Strange Part: Sappers Destroyed
+            </option>
+            
+            <option value="Strange Part: Long-Distance Kills">
+                Strange Part: Long-Distance Kills
+            </option>
+            
+            <option value="Strange Part: Kills with a Taunt Attack">
+                Strange Part: Kills with a Taunt Attack
+            </option>
+            
+            <option value="Strange Cosmetic Part: Freezecam Taunt Appearances">
+                Strange Cosmetic Part: Freezecam Taunt Appearances
+            </option>
+            
+            <option value="Strange Cosmetic Part: Fires Survived">
+                Strange Cosmetic Part: Fires Survived
+            </option>
+            
+            <option value="Strange Cosmetic Part: Kills">
+                Strange Cosmetic Part: Kills
+            </option>
+            
+            <option value="Strange Cosmetic Part: Assists">
+                Strange Cosmetic Part: Assists
+            </option>
+            
+            <option value="Strange Part: Allied Healing Done">
+                Strange Part: Allied Healing Done
+            </option>
+            
+    </select>
+    <select name="exterior" class="item-option" v-model="SlotOption.exterior" @change="UpdateItemOption()">
+        <option value="No_Exterior">No Exterior</option>
+        <option value="Factory New">Factory New</option>
+        <option value="Minimal Wear">Minimal Wear</option>
+        <option value="Field-Tested">Field-Tested</option>
+        <option value="Well-Worn">Well-Worn</option>
+        <option value="Battle-Scarred">Battle-Scarred</option>
+    </select>
+    <select name="craftable" class="item-option" v-model="SlotOption.craftable" @change="UpdateItemOption()">
+        <option value="Craftable">Craftable</option>
+        <option value="Non-Craftable">Non-Craftable</option>
+    </select>
+</div>

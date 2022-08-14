@@ -1,0 +1,8 @@
+<a href="/user/<%=post.owner.userId%>" target="_blank" class="post-user-data">
+    <img class="post-user-profile-pic" style=<%='border-color:' +post.owner.roleColor%> loading="lazy" src="<%=
+        post.owner.profilePic %>"
+        alt="<%= post.owner.name %>">
+            <h2 class="post-user-name" style=<%='color:' +post.owner.roleColor%>>
+                <%= post.owner.name %>
+            </h2>
+</a>

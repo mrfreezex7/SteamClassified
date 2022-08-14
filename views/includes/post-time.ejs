@@ -1,0 +1,9 @@
+<div class="user-post-time noSelect" @click="TogglePostTime(<%=post.postId%>)">
+    <div id="created-time-<%= post.postId %>" class="hidden">
+        ( created <time datetime="<%=post.createdAt%>"></time> )
+    </div>
+    <div id="bumped-time-<%= post.postId %>">
+        ( bumped <time datetime="<%=post.bump%>" postId="<%=post.postId%>"></time> )
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+<% if(user && (user.userId==post.owner.userId)){%>
+    <div class="post-actions" id="post-actions-<%=post.postId%>">
+        <% if(post.active){%>
+            <div id="post-bump-btn-<%=post.postId%>"
+                class="<%= ((Date.now()-new Date(post.bump))/60000>= 30)?'':'hidden' %>">
+
+                <button id="bump-btn-<%=post.postId%>" class="post-action-btn"
+                    @click="BumpPost('<%=post._id%>',<%=post.postId%>)"><svg class="post-action-icon"
+                        xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                        fill="#FFFFFF">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
+                    </svg></button>
+                <div id="bump-btn-loader-<%=post.postId%>" class="loader hidden"
+                    style="font-size: 0.2em;margin: 5.2em;">
+                </div>
+
+            </div>
+            <div>
+                <button id="close-btn-<%=post.postId%>" class="post-action-btn"
+                    @click="OpenPostCloseConfirmDialog(<%=post.postId%>)"><svg class="post-action-icon"
+                        xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                        fill="#FFFFFF">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                    </svg></button>
+            </div>
+            <% }else{%>
+                <p>closed</p>
+                <% }%>
+    </div>
+    <% }%>

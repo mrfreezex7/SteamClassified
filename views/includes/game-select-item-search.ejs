@@ -1,0 +1,19 @@
+<div class="selected-slot-text noSelect">
+    <div v-if="SelectedSlotType===0">
+        Your Inventory ({{UserInventoryCache[SelectedGame].totalItems}})
+    </div>
+    <div v-if="SelectedSlotType===1">
+        Search {{SelectedGame}} Items
+    </div>
+</div>
+
+<div class="post-select-container noSelect">
+    <input class="post-search-input" placeholder="Type item name and press enter to search" type="text"
+        @keyup.enter="SearchItem($event,<%=isSearch%>)" v-model="SearchedWord">
+    <select class="game-selection-input" name="" id="" v-model="SelectedGame">
+        <option value="TF2">Team Fortress 2</option>
+        <option value="CSGO">CSGO</option>
+        <option value="DOTA2">DOTA 2</option>
+    </select>
+
+</div>

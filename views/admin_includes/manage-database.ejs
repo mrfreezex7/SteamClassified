@@ -1,0 +1,47 @@
+<div class="admin-database-settings-container">
+
+    <div class="database-section">
+        <div class="database-section-header">
+            TF2
+        </div>
+        <div class="database-section-options">
+            <div class="database-section-option-btn-wrapper">
+                <div class="database-section-option-btn" @click="GetNSetTF2UnusualParticlePathData()">
+                    Get and Set TF2 Unusual Particle Path Data From BP. {'effect_name':'image_path'}
+                </div>
+            </div>
+            <div class="database-section-option-btn-wrapper">
+                <div class="database-section-option-btn" @click="GetNSetTF2BackpackData()">
+                    Get and Set TF2 Backpack Data in db.
+                </div>
+            </div>
+
+            <div class="database-section-option-btn-wrapper">
+                <div class="database-section-option-btn" @click="GenerateTF2FinalData">
+                    Generate Final TF2 Data
+                </div>
+            </div>
+        </div>
+        <div class="database-section-header">
+            CSGO
+        </div>
+        <div class="database-section-options">
+            <div class="database-section-option-btn-wrapper">
+                <div class="database-section-option-btn" @click="GenerateCSGOFinalData()">
+                    Generate Final CSGO Data
+                </div>
+            </div>
+        </div>
+        <div class="database-section-header">
+            DOTA2
+        </div>
+        <div class="database-section-options">
+            <div class="database-section-option-btn-wrapper">
+                <div class="database-section-option-btn" @click="GenerateDOTA2FinalData()">
+                    Generate Final DOTA2 Data
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

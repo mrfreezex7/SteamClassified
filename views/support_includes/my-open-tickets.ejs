@@ -1,0 +1,41 @@
+<div class="support-ticket-container">
+    <div class="support-ticket-wrapper container">
+        <%- include('support-options.ejs',{ selectedTab:'open' })%>
+            <div class="support-ticket-details-container">
+
+
+                <div class="open-tickets-container">
+                    <div class="tickets-wrapper">
+                        <%if(tickets.length<=0){%>
+                            <div style="text-align: center;">There are no tickets here.</div>
+                            <%}%>
+                                <% tickets.forEach(ticket=>{%>
+                                    <div class="ticket">
+                                        <div class="ticket-header">
+                                            <div class="ticket-data-wrapper">
+                                                <a href="/ticket/<%=ticket.ticketId%>">
+                                                    <div class="ticket-id">#<%=ticket.ticketId%>
+                                                    </div>
+                                                </a>
+                                                <div class="ticket-created-date">( created <time
+                                                        datetime="<%=ticket.createdAt%>"></time> )
+                                                </div>
+                                            </div>
+                                            <div class="ticket-result">
+                                                <p class="ticket-pending">Pending</p>
+                                                <!-- <p class="ticket-processing">Processing</p>
+                            <p class="report-resolved">Closed</p> -->
+                                            </div>
+                                        </div>
+                                        <div class="ticket-reason">
+                                            <div class="ticket-notes">
+                                                <%=ticket.subject%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% })%>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

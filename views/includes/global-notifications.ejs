@@ -1,0 +1,82 @@
+<div class="global-notification-badge-container noSelect">
+    <div class="global-notification-btn-wrapper" @click="ToggleNotifications()"><svg class="global-notification-icon"
+            xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
+        </svg>
+        <%if(user.notifications.length>0){%>
+            <div class="global-notification-counter-badge" v-if="GlobalNotificaiton.show">
+                <%=user.notifications.length%>
+            </div>
+            <%}%>
+    </div>
+    <div class="global-notification-details-wrapper" v-on-clickaway="NotificationClickAway"
+        v-if="GlobalNotificaiton.active">
+        <%if(user.notifications.length>0){%>
+            <div class="view-all-btn" style="cursor: pointer;" @click="ClearAllNotifications()"
+                v-if="GlobalNotificaiton.show">Clear
+                all
+                notifications</div>
+            <div class="notificaiton-detail-overview-container" v-if="GlobalNotificaiton.show">
+                <%user.notifications.forEach(notification=>{%>
+                    <%if(notification.type=='roleChange'){%>
+                        <div @click="NotificationRedirectTo('<%=notification._id%>','/user/'+<%=user.userId%>)"
+                            class="notification-detail">your
+                            role has been
+                            updated to
+                            <span style=<%='color:' +user.roleColor%>> <%=notification.role%> </span>
+                        </div>
+                        <%}else if(notification.type=='ticket' ){%>
+                            <div @click="NotificationRedirectTo('<%=notification._id%>','<%=notification.redirectId%>')"
+                                class="notification-detail">you got <%=notification.counter%> new reply on your ticket
+                                    <span style="color: white;"> #
+                                        <%=notification.id%>
+                                    </span>
+                            </div>
+                            <%}else if(notification.type=='ticketAssigned' ){%>
+                                <div @click="NotificationRedirectTo('<%=notification._id%>','<%=notification.redirectId%>')"
+                                    class="notification-detail">Ticket <span style="color: white;"> #
+                                        <%=notification.id%>
+                                    </span> has been assigned.
+
+                                </div>
+                                <%}else if(notification.type=='report' ){%>
+                                    <div @click="NotificationRedirectTo('<%=notification._id%>','<%=notification.redirectId%>')"
+                                        class="notification-detail">Report <span style="color: white;"> #
+                                            <%=notification.id%>
+                                        </span> has new result.
+                                    </div>
+                                    <%}else if(notification.type=='offerComment' ){%>
+                                        <div @click="NotificationRedirectTo('<%=notification._id%>','/trade/<%=notification.id%>/#<%=notification.redirectId%>')"
+                                            class="notification-detail">you got <%=notification.counter%> new comment on
+                                                your
+                                                post
+                                                <span style="color: white;"> #
+                                                    <%=notification.id%>
+                                                </span>
+                                        </div>
+                                        <%}else if(notification.type=='offerReply' ){%>
+                                            <div @click="NotificationRedirectTo('<%=notification._id%>','/trade/<%=notification.id%>/#<%=notification.redirectId%>')"
+                                                class="notification-detail">you got <%=notification.counter%> new reply
+                                                    on
+                                                    your
+                                                    comment
+                                                    <span style="color: white;"> #
+                                                        <%=notification.id%>
+                                                    </span>
+                                            </div>
+                                            <%}%>
+
+                                                <%})%>
+            </div>
+            <div style="
+            margin: 1em 0.2em;
+        " v-else>No notifications</div>
+            <%}else{%>
+                <div style="
+                margin: 1em 0.2em;
+            ">No notifications</div>
+                <%}%>
+    </div>
+</div>
